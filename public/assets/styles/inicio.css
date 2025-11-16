@@ -1,0 +1,322 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* ---------------- NAVBAR: logo left, links centered ---------------- */
+
+.navbar {
+    width: 100%;
+    background: #022C60;
+    padding: 15px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* dejamos el flujo natural para nav-left */
+    position: relative;          /* para que .nav-links absolute se base aquí */
+}
+
+/* izquierda (logo + SaferTech) */
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 2; /* por encima de la lista centrada */
+}
+
+/* logo */
+.logo {
+    width: 55px;
+}
+
+/* título */
+.nav-left h2,
+.nav-title {
+    color: white;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+/* enlaces (centro exacto) */
+.nav-links {
+    position: absolute;         /* sacamos del flujo para poder centrar exactamente */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 40px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    z-index: 1;
+}
+
+/* estilo de cada enlace (recuerda tus <li><a> dentro) */
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.nav-links a.active,
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+/* Si tienes <li> agrega esto para evitar márgenes inesperos */
+.nav-links li {
+    margin: 0;
+    padding: 0;
+}
+
+/* ---------------- Responsive behavior ---------------- */
+
+/* Tablets */
+@media (max-width: 992px) {
+    .navbar {
+        padding: 15px 30px;
+    }
+
+    .nav-links {
+        gap: 25px;
+    }
+}
+
+/* Celulares: convertimos a flujo vertical centrado,
+   mostrando logo + title en la primera línea y links debajo */
+@media (max-width: 768px) {
+
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 16px 20px;
+    }
+
+    /* nav-left seguirá centrado en mobile (es lo habitual) */
+    .nav-left {
+        justify-content: center;
+    }
+
+    /* restauramos nav-links al flujo normal, centrados en columna/row */
+    .nav-links {
+        position: static;
+        transform: none;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 16px;
+    }
+}
+
+/* Celulares pequeños */
+@media (max-width: 480px) {
+    .logo {
+        width: 48px;
+    }
+
+    .nav-title {
+        font-size: 18px;
+    }
+
+    .nav-links a {
+        font-size: 16px;
+    }
+}
+
+
+/* HERO SECTION */
+.hero {
+    background: #000;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 100px 80px;
+}
+
+.hero-text {
+    max-width: 50%;
+}
+
+.hero-text h1 {
+    font-size: 42px;
+    line-height: 1.3;
+    margin-bottom: 20px;
+}
+
+.subtext {
+    font-size: 18px;
+    margin-bottom: 40px;
+}
+
+.btn {
+    padding: 12px 25px;
+    background: #ddd;
+    color: black;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.hero-img img {
+    width: 450px;
+}
+
+/* FOOTER */
+.footer {
+    background: #0a0a0a;
+    color: #ccc;
+    padding: 50px 80px 20px 80px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.footer-left {
+    max-width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* ← Ahora sí funciona */
+}
+
+.footer-logo {
+    width: 55px;
+    margin-bottom: 10px;
+}
+
+.footer-left h3 {
+    color: white;
+    margin-bottom: 10px;
+}
+
+.footer-links,
+.footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.footer-links h4,
+.footer-contact h4 {
+    color: white;
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #ccc;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px solid #333;
+    color: #777;
+    font-size: 14px;
+}
+
+/* =================================================== */
+/*                     RESPONSIVE                      */
+/* =================================================== */
+
+/* Tablets */
+@media (max-width: 992px) {
+
+    .nav-links {
+        gap: 25px;
+    }
+
+    .hero {
+        padding: 80px 40px;
+    }
+
+    .hero-text h1 {
+        font-size: 36px;
+    }
+}
+
+/* Celulares */
+@media (max-width: 768px) {
+
+    /* NAVBAR */
+    .navbar {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+        padding: 20px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    /* HERO */
+    .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding: 60px 40px;
+    }
+
+    .hero-text {
+        max-width: 100%;
+    }
+
+    .hero-text h1 {
+        font-size: 32px;
+    }
+
+    .subtext {
+        font-size: 16px;
+    }
+
+    .hero-img img {
+        width: 80%;
+        max-width: 350px;
+    }
+
+    /* FOOTER RESPONSIVE */
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-left {
+        align-items: center !important;
+        text-align: center !important;
+    }
+
+    .footer-left img {
+        margin-left: 0;
+    }
+}
+
+/* Celulares pequeños */
+@media (max-width: 480px) {
+
+    .nav-left h2 {
+        font-size: 18px;
+    }
+
+    .hero-text h1 {
+        font-size: 26px;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 14px;
+    }
+}

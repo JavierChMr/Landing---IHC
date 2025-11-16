@@ -374,3 +374,8 @@ if (!chats.length) {
 sidebarUser.textContent = "admin1";
 if (userMenu) userMenu.setAttribute("aria-hidden", "true");
 closeListPanel();
+
+
+document.getElementById("btnAjustes").addEventListener("click", () => {
+    window.location.href = "ajustes.html";
+});

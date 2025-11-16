@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>SaferTech — Chat</title>
+    <link rel="stylesheet" href="/public/assets/styles/chatbot.css">
+</head>
+<body>
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-top">
+            <div class="logo-wrap">
+                <img src="/public/assets/img/logo.png" alt="Logo SaferTech" class="logo-img">
+            </div>
+
+            <button class="menu-item" id="btnNuevo">
+                <span class="icon">＋</span>
+                <span class="label">Nuevo chat</span>
+            </button>
+
+            <button class="menu-item" id="btnFavoritos">
+                <span class="icon">★</span>
+                <span class="label">Favoritos</span>
+            </button>
+
+            <button class="menu-item" id="btnHistorial">
+                <span class="icon">⟲</span>
+                <span class="label">Historial</span>
+            </button>
+
+            <button class="menu-item" id="btnAjustes">
+                <span class="icon">⚙</span>
+                <span class="label">Ajustes</span>
+            </button>
+
+            <div class="list-panel" id="listPanel" aria-hidden="true">
+                <!-- acá se inyectan history/favs -->
+            </div>
+        </div>
+
+        <div class="sidebar-bottom">
+            <div class="user-box" id="userBox">
+                <span class="user-icon">👤</span>
+                <span class="user-name" id="sidebarUser">admin1</span>
+            </div>
+
+            <!-- Minimal popup menu (oculto por defecto) -->
+            <div id="userMenu" class="user-menu" aria-hidden="true">
+                <button id="logoutBtn" class="user-menu-item">Cerrar sesión</button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main" id="mainArea">
+        <header class="main-header">
+            <button id="hamburger" class="hamburger" aria-label="Abrir menú">☰</button>
+
+            <div class="title-wrap">
+                <h1 class="title">SaferTech</h1>
+            </div>
+
+            <div class="header-actions">
+                <button id="starCurrent" class="icon-btn" title="Marcar/Desmarcar favorito">☆</button>
+                <button id="deleteChat" class="icon-btn" title="Eliminar chat actual">🗑️</button>
+            </div>
+        </header>
+
+        <!-- Welcome / content area -->
+        <section class="welcome" id="welcomeScreen">
+            <h2 class="welcome-title">En que puedo ayudarte hoy?</h2>
+
+            <div class="quick-buttons">
+                <button class="pill" data-action="analizar">Analizar código</button>
+                <button class="pill" data-action="comparar">Comparar código</button>
+                <button class="pill" data-action="traducir">Traducir código</button>
+            </div>
+        </section>
+
+        <!-- Chat window -->
+        <section class="chat-area">
+            <div class="chat-window" id="chatWindow" role="log" aria-live="polite"></div>
+
+            <div class="input-wrapper">
+                <div class="input-inner">
+                    <span class="plus">＋</span>
+                    <input id="mensaje" type="text" placeholder="Escribe tu mensaje..." autocomplete="off" />
+                    <button id="sendBtn" class="send-btn">Enviar</button>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script src="/public/assets/scripts/chatbot.js"></script>
+</body>
+</html>

@@ -33,7 +33,7 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
     // CREDENCIALES CORRECTAS
     if (usuario === "admin1" && contrasena === "administrador12345") {
         alert("Inicio de sesión exitoso");
-        window.location.href = "dashboard.html";
+        window.location.href = "chatbot.html";  // 🔥 REDIRECCIÓN ACTUALIZADA
     } else {
         let p = document.createElement("p");
         p.textContent = "Credenciales incorrectas.";

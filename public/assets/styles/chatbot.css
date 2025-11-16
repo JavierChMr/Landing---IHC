@@ -1,0 +1,296 @@
+/* RESET + base */
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: Inter, Arial, sans-serif; }
+:root{
+    --bg:#05345c;
+    --sidebar:#03243f;
+    --muted:#cfe6ff;
+    --accent:#3b84ff;
+}
+
+/* page */
+body { background: var(--bg); color: #fff; height: 100vh; overflow: hidden; }
+
+/* app layout */
+.app { display: flex; height: 100vh; }
+
+/* ─────────────────────────────── SIDEBAR ─────────────────────────────── */
+.sidebar {
+    width: 300px;
+    background: var(--sidebar);
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    padding: 28px 22px;
+    gap: 16px;
+    transition: transform .25s ease;
+    z-index: 50;
+}
+.logo-img { width:110px; display:block; }
+
+/* menu buttons */
+.menu-item {
+    display:flex;
+    gap: 12px;
+    align-items:center;
+    background: none;
+    border: none;
+    color: #e6f3ff;
+    font-size: 17px;
+    padding: 12px 8px;
+    cursor: pointer;
+    width:100%;
+    border-radius:8px;
+}
+.menu-item:hover { background: rgba(255,255,255,0.08); }
+
+.menu-item .icon { width:26px; height:26px; opacity:0.8 }
+
+/* history / favs panel */
+.list-panel {
+    margin-top: 12px;
+    max-height: 40vh;
+    overflow-y:auto;
+    display:none;
+    padding-top: 10px;
+    border-top: 1px dashed rgba(255,255,255,0.05);
+}
+
+.list-item {
+    padding: 10px;
+    border-radius:8px;
+    cursor:pointer;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    color:#eaf6ff;
+}
+.list-item:hover { background: rgba(255,255,255,0.06); }
+
+.list-item-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 160px;
+}
+
+.meta {
+    font-size:11px;
+    opacity:0.5;
+}
+
+/* bottom */
+.sidebar-bottom { margin-top:auto; position:relative; } /* relative to position popup */
+.user-box {
+    display:flex;
+    gap:10px;
+    background: rgba(255,255,255,0.06);
+    padding:12px;
+    border-radius:20px;
+    align-items:center;
+    cursor:pointer;
+}
+.user-name { font-size:14px; }
+
+/* minimal user popup menu (option A) */
+.user-menu {
+    position: absolute;
+    left: 22px;
+    bottom: 72px; /* above the user box */
+    background: rgba(0,0,0,0.75);
+    border: 1px solid rgba(255,255,255,0.06);
+    backdrop-filter: blur(6px);
+    color: #fff;
+    border-radius: 8px;
+    padding: 6px;
+    display: none;
+    z-index: 200;
+    min-width: 140px;
+}
+.user-menu[aria-hidden="false"] { display: block; }
+.user-menu-item {
+    background: transparent;
+    border: none;
+    color: #fff;
+    width: 100%;
+    text-align: left;
+    padding: 10px 12px;
+    cursor: pointer;
+    border-radius: 6px;
+}
+.user-menu-item:hover { background: rgba(255,255,255,0.04); }
+
+/* ─────────────────────────────── MAIN CONTENT ─────────────────────────────── */
+.main {
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    padding: 30px 48px;
+    overflow:hidden;
+}
+
+/* HEADER */
+.main-header {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom: 18px;
+}
+.hamburger {
+    display:none;
+    background:none;
+    border:none;
+    font-size:26px;
+    cursor:pointer;
+    color:white;
+}
+.title { font-size:40px; font-weight:700; }
+
+/* WELCOME SCREEN */
+.welcome {
+    text-align:center;
+    padding: 40px 0 22px 0;
+}
+.welcome-title {
+    font-size:34px;
+    margin-bottom:20px;
+}
+.quick-buttons {
+    display:flex;
+    justify-content:center;
+    gap:16px;
+}
+.pill {
+    background:white;
+    border:none;
+    padding:10px 18px;
+    border-radius:20px;
+    cursor:pointer;
+}
+
+/* CHAT ─────────────────────────────────────────────── */
+.chat-area {
+    display:flex;
+    flex-direction:column;
+    height: calc(100vh - 240px);
+}
+
+.chat-window {
+    flex:1;
+    background: rgba(255,255,255,0.06);
+    border-radius: 18px;
+    padding: 22px;
+    overflow-y:auto;
+    margin-bottom:18px;
+
+    /* layout column, messages stacked */
+    display:flex;
+    flex-direction:column;
+    gap: 14px;
+}
+
+/* messages */
+.message {
+    padding:12px 16px;
+    border-radius:14px;
+    max-width:70%;
+    font-size:16px;
+    word-break: break-word;
+    line-height:1.45;
+}
+
+/* Usuario (izquierda) */
+.message.user {
+    background:white;
+    color:black;
+    align-self:flex-start;
+    border-bottom-left-radius:4px;
+    margin-top:10px;
+}
+
+/* Bot (derecha) */
+.message.bot {
+    background:rgba(255,255,255,0.95);
+    color:black;
+    align-self:flex-end;
+    border-bottom-right-radius:4px;
+    margin-top:10px;
+}
+
+/* INPUT AREA ───────────────────────────────────────────── */
+.input-wrapper { padding: 0 12px 12px 12px; }
+.input-inner {
+    background:white;
+    padding:10px 14px;
+    border-radius:40px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+.plus { font-size:20px; color:#6b6b6b; }
+.input-inner input {
+    flex:1;
+    border:none;
+    outline:none;
+    font-size:16px;
+}
+.send-btn {
+    background:var(--accent);
+    border:none;
+    color:white;
+    padding:10px 16px;
+    border-radius:20px;
+    cursor:pointer;
+}
+
+/* ─────────────────────────────── RESPONSIVE ─────────────────────────────── */
+
+/* Tablet */
+@media (max-width: 950px) {
+    .main { padding: 20px; }
+    .title { font-size:32px; }
+    .chat-area { height: calc(100vh - 200px); }
+}
+
+/* Mobile */
+@media (max-width: 760px) {
+
+    .sidebar {
+        position:fixed;
+        left:0;
+        top:0;
+        bottom:0;
+        transform: translateX(-110%);
+        width:260px;
+        box-shadow: 6px 0 30px rgba(0,0,0,0.45);
+        z-index:100;
+    }
+    .sidebar.open { transform: translateX(0); }
+
+    .hamburger { display:block; }
+
+    .main { padding:16px; }
+
+    .title { font-size:26px; }
+
+    .welcome-title { font-size:22px; }
+
+    .chat-area { height: calc(100vh - 160px); }
+
+    .chat-window {
+        padding:14px;
+        border-radius:14px;
+    }
+
+    .message {
+        max-width: 88%;
+        font-size:15px;
+    }
+
+    .input-inner {
+        padding:8px 12px;
+        border-radius:34px;
+    }
+    .input-inner input { font-size:15px; }
+
+    .send-btn { padding:8px 14px; font-size:14px; }
+}

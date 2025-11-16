@@ -1,84 +1,92 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SaferTech - SkillLink</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SaferTech</title>
     <link rel="stylesheet" href="/public/assets/styles/sobrenosotros.css">
 </head>
-
 <body>
 
-    
-    <img class="logo" src="img/logo.png" alt="SkillLink Logo">
-
-    <!-- NAVBAR -->
-    <div class="navbar">
-        <a href="index.html">Inicio</a>
-        <a href="sobre.html">Sobre Nosotros</a>
-        <a href="funcionalidades.html">Funcionalidades</a>
-        <a href="contacto.html">Contacto</a>
-        
-    </div>
-
-    <!-- CONTENIDO PRINCIPAL -->
-    <div class="container">
-        <h1>Sobre SkilLink</h1>
-        <p>
-            SkillLink es una startup fundada por estudiantes de la UPC, comprometida con el desarrollo 
-            de soluciones tecnológicas que impacten positivamente en la educación y la vida cotidiana.
-            <br><br>
-            Nuestro enfoque está en crear herramientas inteligentes que potencien el aprendizaje 
-            autónomo y ayuden a los estudiantes a superar los retos que enfrentan en su formación académica.
-        </p>
-
-        <div class="flex">
-            <div class="box">
-                <h2>Misión</h2>
-                <p>
-                    Desarrollar soluciones tecnológicas que impulsen el aprendizaje y crecimiento 
-                    profesional, conectando habilidades con oportunidades reales.
-                </p>
-            </div>
-
-            <div class="box">
-                <h2>Visión</h2>
-                <p>
-                    Ser la plataforma líder que transforma la forma de aprender y aplicar conocimientos 
-                    mediante innovación y tecnología.
-                </p>
-            </div>
+    <!-- NAVBAR (NO TOCADO) -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <img src="img/logo.png" class="logo" alt="Logo Skillink">
+            <h2 class="nav-title">SaferTech</h2>
         </div>
-        <hr>
-    </div>
 
-    <!-- FOOTER -->
+        <ul class="nav-links">
+            <li><a href="inicio.html">Inicio</a></li>
+            <li><a href="sobrenosotros.html" class="active">Sobre Nosotros</a></li>
+            <li><a href="funcionalidades.html">Funcionalidades</a></li>
+            <li><a href="preguntas.html">Preguntas Frecuentes</a></li>
+        </ul>
+    </nav>
+
+    <!-- ============================ -->
+    <!--        SECCIÓN CARDS         -->
+    <!-- ============================ -->
+    <section class="about-section">
+
+        <!-- CARD GRANDE PRINCIPAL -->
+        <div class="card card-main">
+            <h2>Sobre Skillink</h2>
+            <p>
+                Skillink es una plataforma diseñada para conectar talento con oportunidades,
+                permitiendo a usuarios aprender, crecer y potenciar sus habilidades mediante
+                una experiencia personalizada y accesible.
+            </p>
+        </div>
+
+        <!-- CONTENEDOR DE DOS CARDS -->
+        <div class="cards-row">
+
+            <div class="card">
+                <h3>Nuestra Misión</h3>
+                <p>
+                    Brindar un espacio educativo accesible donde cualquier persona pueda mejorar
+                    sus habilidades y alcanzar nuevas oportunidades profesionales.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Nuestra Visión</h3>
+                <p>
+                    Ser la plataforma líder en desarrollo de habilidades, impulsando el talento
+                    global mediante tecnología accesible y aprendizaje personalizado.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER (NO TOCADO) -->
     <footer class="footer">
         <div class="footer-content">
 
             <div class="footer-left">
-                <img src="img/logo.png" class="footer-logo" alt="Logo SaferTech">
-                <h3>SaferTech</h3>
-                <p>Aprende programación paso a paso con un asistente que se adapta a tu nivel.</p>
+                <img src="img/logo.png" class="footer-logo" alt="Logo Skillink">
+                <h3>Skillink</h3>
+                <p>Potenciamos tus habilidades conectándote con mejores oportunidades.</p>
             </div>
 
             <div class="footer-links">
                 <h4>Secciones</h4>
-                <a href="index.html">Inicio</a>
-                <a href="sobre.html">Sobre Nosotros</a>
+                <a href="inicio.html">Inicio</a>
+                <a href="sobrenosotros.html">Sobre Nosotros</a>
                 <a href="funcionalidades.html">Funcionalidades</a>
-                <a href="contacto.html">Contacto</a>
+                <a href="preguntas.html">Preguntas Frecuentes</a>
             </div>
 
             <div class="footer-contact">
                 <h4>Contáctanos</h4>
-                <p>Email: soporte@safertech.com</p>
+                <p>Email: soporte@skillink.com</p>
                 <p>WhatsApp: +51 999 999 999</p>
             </div>
         </div>
 
         <div class="footer-bottom">
-            © 2025 SaferTech — Todos los derechos reservados
+            © 2025 Skillink — Todos los derechos reservados
         </div>
     </footer>
 

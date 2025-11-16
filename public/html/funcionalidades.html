@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funcionalidades - SaferTech</title>
+    <link rel="stylesheet" href="/public/assets/styles/funcionalidades.css">
+</head>
+<body>
+
+    <!-- NAVBAR NUEVA -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <img src="img/logo.png" class="logo" alt="Logo SaferTech">
+            <h2 class="nav-title">SaferTech</h2>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="inicio.html">Inicio</a></li>
+            <li><a href="sobrenosotros.html">Sobre Nosotros</a></li>
+            <li><a href="funcionalidades.html" class="active">Funcionalidades</a></li>
+            <li><a href="preguntas.html">Preguntas Frecuentes</a></li>
+        </ul>
+    </nav>
+
+    <!-- SECCIÓN PERSONALIZACIÓN -->
+    <section class="func-section">
+        <h2 class="func-title">Personalización de Aprendizaje</h2>
+
+        <div class="func-container">
+            <!-- IZQUIERDA -->
+            <div class="form-area">
+
+                <div class="form-group">
+                    <label for="area-select">Área Académica</label>
+                    <select id="area-select" name="area">
+                        <option value="Ingeniería de Software">Ingeniería de Software</option>
+                        <option value="Ciencias de Computación">Ciencias de Computación</option>
+                        <option value="Ciberseguridad">Ciberseguridad</option>
+                        <option value="Ingeniería de Sistemas">Ingeniería de Sistemas</option>
+                        <option value="Desarrollo Web y Móvil">Desarrollo Web y Móvil</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="nivel-select">Nivel de Conocimiento</label>
+                    <select id="nivel-select" name="nivel">
+                        <option value="Principiante">Principiante</option>
+                        <option value="Intermedio">Intermedio</option>
+                        <option value="Avanzado">Avanzado</option>
+                        <option value="Experto">Experto</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="tema-select">Tema de Interés</label>
+                    <select id="tema-select" name="tema">
+                        <option value="Bucles">Bucles</option>
+                        <option value="Funciones">Funciones</option>
+                        <option value="Estructuras de datos">Estructuras de datos</option>
+                    </select>
+                </div>
+
+                <button class="btn-enviar" id="btn-enviar" type="button">Enviar selección</button>
+            </div>
+
+            <!-- DERECHA -->
+            <div class="resultado-card" aria-live="polite">
+                <h3>Información personalizada</h3>
+                <p id="resultado-text">Aquí aparecerá la información según las opciones seleccionadas.</p>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- SECCIÓN EXPLICACIÓN PASO A PASO -->
+    <section class="explicacion-section">
+
+        <div class="explicacion-container">
+
+            <!-- LADO IZQUIERDO: IMAGEN -->
+            <div class="explicacion-img">
+                <img src="img/explicacion.png" alt="Explicación paso a paso">
+            </div>
+
+            <!-- LADO DERECHO: TEXTOS -->
+            <div class="explicacion-text">
+                <h2 class="explicacion-title">Explicación Paso a Paso</h2>
+                <p class="explicacion-desc">
+                    SaferTech te ofrece una explicación clara, detallada y paso a paso de cada línea de tu código.
+                    Con esta guía comprensible, podrás entender mejor cómo funciona tu programación, identificar
+                    errores y aprender de forma más intuitiva y segura.
+                </p>
+
+                <h3 class="valoracion-title">Sistema de Valoración</h3>
+                <p class="valoracion-desc">
+                    SaferTech incluye un sistema de valoración de 5 estrellas que permite a los usuarios calificar fácilmente
+                    la calidad de las explicaciones y herramientas que ofrece la plataforma. Esta función ayuda a mejorar
+                    continuamente el servicio, destacando aquello que realmente aporta valor.
+                </p>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- TESTIMONIOS -->
+    <section class="testimonios-section">
+        <h2 class="testimonios-title">Testimonios</h2>
+
+        <div class="testimonios-container">
+
+            <!-- CARD 1 -->
+            <div class="test-card">
+                <img src="img/user1.png" class="test-img" alt="Foto Laura Méndez">
+                <h4>Laura Ménddez</h4>
+                <p>"SaferTech me ayudó a entender mi código de una forma simple y rápida. Es como tener un tutor disponible todo el tiempo."</p>
+            </div>
+
+            <!-- CARD 2 -->
+            <div class="test-card">
+                <img src="img/user2.png" class="test-img" alt="Foto Ricardo Salvatierra">
+                <h4>Ricardo Salvatierra</h4>
+                <p>"Gracias a SaferTech ahora puedo depurar mis proyectos sin estrés. Explica cada paso de manera clara y útil."</p>
+            </div>
+
+            <!-- CARD 3 -->
+            <div class="test-card">
+                <img src="img/user3.png" class="test-img" alt="Foto Daniela Torres">
+                <h4>Daniela Torres</h4>
+                <p>"SaferTech es una herramienta increíble. Me permite aprender y mejorar mi programación con explicaciones fáciles de seguir."</p>
+            </div>
+
+        </div>
+    </section>
+
+
+
+    <!-- FOOTER (COMO LO TENÍAS) -->
+    <footer class="footer">
+        <div class="footer-content">
+
+            <div class="footer-left">
+                <img src="img/logo.png" class="footer-logo" alt="Logo SaferTech">
+                <h3>SaferTech</h3>
+                <p>Aprende programación paso a paso con un asistente que se adapta a tu nivel.</p>
+            </div>
+
+            <div class="footer-links">
+                <h4>Secciones</h4>
+                <a href="inicio.html">Inicio</a>
+                <a href="sobrenosotros.html">Sobre Nosotros</a>
+                <a href="funcionalidades.html">Funcionalidades</a>
+                <a href="preguntas.html">Preguntas Frecuentes</a>
+            </div>
+
+            <div class="footer-contact">
+                <h4>Contáctanos</h4>
+                <p>Email: soporte@safertech.com</p>
+                <p>WhatsApp: +51 999 999 999</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            © 2025 SaferTech — Todos los derechos reservados
+        </div>
+    </footer>
+
+    <!-- SCRIPT: funcionalidad JS -->
+    <script src="/public/assets/scripts/funcionalidades.js"></script>
+</body>
+</html>

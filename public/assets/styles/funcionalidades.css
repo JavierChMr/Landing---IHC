@@ -1,0 +1,445 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* ---------------- NAVBAR EXACTO ---------------- */
+
+.navbar {
+    width: 100%;
+    background: #022C60;
+    padding: 15px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 2;
+}
+
+.logo {
+    width: 55px;
+}
+
+.nav-left h2,
+.nav-title {
+    color: white;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.nav-links {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 40px;
+    list-style: none;
+    z-index: 1;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.nav-links a.active,
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+/* ---------------- RESPONSIVE NAV ---------------- */
+
+@media (max-width: 992px) {
+    .navbar {
+        padding: 15px 30px;
+    }
+    .nav-links {
+        gap: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    .nav-links {
+        position: static;
+        transform: none;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 16px;
+    }
+}
+
+/* ---------------- COLOR ROOT ---------------- */
+
+:root{
+    --bg-elegant-1: #0A1630;
+    --bg-elegant-2: #081225;
+    --muted-text: #dcdcdc;
+    --accent: #022C60;
+}
+
+/* ============================= */
+/*   SECCIÓN PERSONALIZACIÓN     */
+/* ============================= */
+
+.func-section {
+    padding: 70px 80px;
+    background: linear-gradient(180deg, var(--bg-elegant-1), var(--bg-elegant-2));
+    margin-bottom: 0; /* QUITA ESPACIO BLANCO */
+}
+
+.func-title {
+    font-size: 32px;
+    color: #ffffff;
+    font-weight: 700;
+    margin-bottom: 40px;
+}
+
+.func-container {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+/* FORM */
+
+.form-area {
+    width: 45%;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid #d0d6e6;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--accent);
+}
+
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 2px solid #b6c5ff;
+    background: white;
+    transition: 0.2s;
+}
+
+.form-group select:focus {
+    border-color: var(--accent);
+}
+
+.btn-enviar {
+    width: 100%;
+    padding: 14px;
+    font-size: 17px;
+    font-weight: 600;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.btn-enviar:hover {
+    background: #001B3F;
+}
+
+/* RESULTADO */
+
+.resultado-card {
+    width: 50%;
+    background: white;
+    border: 1px solid #d0d6e6;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 25px;
+    border-radius: 12px;
+}
+
+.resultado-card h3 {
+    font-size: 24px;
+    color: var(--accent);
+}
+
+/* RESPONSIVE PERSONALIZACIÓN */
+@media (max-width: 768px) {
+    .func-container {
+        flex-direction: column;
+    }
+    .form-area,
+    .resultado-card {
+        width: 100%;
+    }
+}
+
+/* ============================= */
+/*   EXPLICACIÓN PASO A PASO     */
+/* ============================= */
+
+.explicacion-section {
+    padding: 70px 60px;
+    background: linear-gradient(180deg, var(--bg-elegant-1), var(--bg-elegant-2));
+    margin: 0; /* QUITA ESPACIO EN BLANCO */
+}
+
+.explicacion-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.explicacion-img img {
+    width: 420px;
+    max-width: 100%;
+    border-radius: 14px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+}
+
+.explicacion-text {
+    max-width: 600px;
+}
+
+.explicacion-title {
+    font-size: 30px;
+    color: white;
+    margin-bottom: 12px;
+}
+
+.explicacion-desc,
+.valoracion-desc {
+    color: var(--muted-text);
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.valoracion-title {
+    font-size: 22px;
+    color: white;
+    margin-top: 20px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .explicacion-container {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* ============================= */
+/*           TESTIMONIOS         */
+/* ============================= */
+
+.testimonios-section {
+    background: linear-gradient(180deg, var(--bg-elegant-1), var(--bg-elegant-2));
+    padding: 70px 0 70px;
+    margin: 0; /* SIN ESPACIO EN BLANCO */
+    text-align: center;
+}
+
+.testimonios-title {
+    color: white;
+    font-size: 32px;
+    margin-bottom: 40px;
+}
+
+.testimonios-container {
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+    flex-wrap: wrap;
+}
+
+.test-card {
+    background: white;
+    width: 280px;
+    padding: 25px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 6px 22px rgba(0,0,0,0.18);
+    transition: 0.2s;
+}
+
+.test-card:hover {
+    transform: translateY(-6px);
+}
+
+.test-img {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.test-card h4 {
+    color: #072043;
+    margin-bottom: 10px;
+}
+
+/* FOOTER */
+.footer {
+    background: #0a0a0a;
+    color: #ccc;
+    padding: 50px 80px 20px 80px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.footer-left {
+    max-width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* ← Ahora sí funciona */
+}
+
+.footer-logo {
+    width: 55px;
+    margin-bottom: 10px;
+}
+
+.footer-left h3 {
+    color: white;
+    margin-bottom: 10px;
+}
+
+.footer-links,
+.footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.footer-links h4,
+.footer-contact h4 {
+    color: white;
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #ccc;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px solid #333;
+    color: #777;
+    font-size: 14px;
+}
+
+/* RESPONSIVE FOOTER */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+}
+
+
+/* ============================= */
+/*  RESULTADO PERSONALIZADO BONITO */
+/* ============================= */
+
+.resultado-card {
+    width: 50%;
+    background: linear-gradient(145deg, #ffffff, #f4f7ff);
+    border: 1px solid #c4d0ff;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    padding: 35px;
+    border-radius: 18px;
+    position: relative;
+    overflow: hidden;
+    animation: fadeIn 0.4s ease;
+}
+
+/* Esferas decorativas */
+.resultado-card::before {
+    content: "";
+    position: absolute;
+    top: -30px;
+    right: -30px;
+    width: 120px;
+    height: 120px;
+    background: rgba(2, 44, 96, 0.12);
+    border-radius: 50%;
+}
+
+.resultado-card::after {
+    content: "";
+    position: absolute;
+    bottom: -40px;
+    left: -40px;
+    width: 150px;
+    height: 150px;
+    background: rgba(2, 44, 96, 0.08);
+    border-radius: 50%;
+}
+
+/* Título */
+.resultado-card h3 {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--accent);
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+/* Texto de resultado */
+#resultado-text {
+    background: white;
+    border-left: 6px solid var(--accent);
+    padding: 20px 22px;
+    border-radius: 12px;
+    font-size: 17px;
+    color: #0f0f0f;
+    line-height: 1.6;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    animation: slideUp 0.45s ease;
+    white-space: pre-line; /* Mantiene saltos de línea del JS */
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+

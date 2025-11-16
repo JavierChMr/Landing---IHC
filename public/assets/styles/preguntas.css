@@ -1,0 +1,260 @@
+/* ————————————— RESET —————————————— */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+html, body {
+    background: black;
+    color: white;
+}
+
+/* ————————————— NAVBAR ADAPTADA ————————————— */
+.navbar {
+    width: 100%;
+    background: #022C60;
+    padding: 20px 40px; /* ← MISMO GROSOR QUE inicio.html */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 2;
+}
+
+.logo {
+    width: 55px;
+}
+
+.nav-title {
+    color: white;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.nav-links {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 40px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    text-decoration: underline;
+}
+
+/* ————————————— SECCIÓN FAQ ————————————— */
+.faq-section {
+    display: flex;
+    justify-content: space-between;
+    padding: 80px;
+    color: white;
+}
+
+.faq-left {
+    width: 55%;
+}
+
+.faq-title {
+    font-size: 32px;
+    margin-bottom: 25px;
+}
+
+.faq-box {
+    background: #023a63;
+    padding: 20px 22px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: background .2s;
+    border: 3px solid rgba(255,255,255,0.25);
+}
+
+.faq-box:hover {
+    background: #034b82;
+}
+
+.faq-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+}
+
+.faq-answer {
+    display: none;
+    padding: 15px 5px 0 5px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.faq-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.faq-img {
+    width: 330px;
+}
+
+/* ————————————— FOOTER ————————————— */
+.footer {
+    background: #0a0a0a;
+    color: #ccc;
+    padding: 50px 80px 20px 80px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.footer-left {
+    max-width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.footer-logo {
+    width: 55px;
+    margin-bottom: 10px;
+}
+
+.footer-left h3 {
+    color: white;
+    margin-bottom: 10px;
+}
+
+.footer-links,
+.footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.footer-links h4,
+.footer-contact h4 {
+    color: white;
+    margin-bottom: 10px;
+}
+
+.footer-links a,
+.footer-contact a,
+.footer a {
+    color: #ccc !important;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px solid #333;
+    color: #777;
+    font-size: 14px;
+}
+
+/* ===================== RESPONSIVE ===================== */
+
+/* Tablets */
+@media (max-width: 992px) {
+    .navbar {
+        padding: 18px 30px;
+    }
+
+    .nav-links {
+        gap: 25px;
+    }
+
+    .faq-section {
+        padding: 60px;
+    }
+}
+
+/* Celulares */
+@media (max-width: 768px) {
+
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 20px; /* ← Igual al inicio */
+    }
+
+    .nav-left {
+        justify-content: center;
+    }
+
+    .nav-links {
+        position: static;
+        transform: none;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 16px;
+    }
+
+    .faq-section {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px;
+    }
+
+    .faq-left {
+        width: 100%;
+    }
+
+    .faq-img {
+        width: 75%;
+        margin-top: 30px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-left {
+        align-items: center !important;
+        text-align: center !important;
+    }
+}
+
+/* Celulares pequeños */
+@media (max-width: 480px) {
+
+    .logo {
+        width: 48px;
+    }
+
+    .nav-title {
+        font-size: 18px;
+    }
+
+    .nav-links a {
+        font-size: 16px;
+    }
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crear Cuenta</title>
+    <link rel="stylesheet" href="/public/assets/styles/registrar.css" />
+</head>
+
+<body>
+
+<div class="container">
+    <div class="left">
+        <h1>Crear cuenta</h1>
+
+        <form id="formRegistro">
+            <input type="text" id="nombre" placeholder="Nombre" />
+            <input type="email" id="correo" placeholder="Correo" />
+            <input type="password" id="contrasena" placeholder="Contraseña" />
+
+            <button type="submit" class="btn">Registrarse</button>
+
+            <div id="errores"></div> <!-- para mostrar mensajes -->
+        </form>
+
+        <div class="separator">
+            <span></span>
+            <p>o</p>
+            <span></span>
+        </div>
+
+        <p class="continue">Continúa con</p>
+
+        <div class="social-buttons">
+            <button class="google">
+                <img src="img/google.png" alt="Google">
+                Google
+            </button>
+
+            <button class="apple">
+                <img src="img/apple.png" alt="Apple">
+                Apple
+            </button>
+        </div>
+    </div>
+
+    <div class="right">
+        <img src="/public/assets/img/ia.png" class="robot" alt="Robot IA">
+    </div>
+</div>
+
+<script src="/public/assets/scripts/registro.js"></script>
+
+</body>
+</html>

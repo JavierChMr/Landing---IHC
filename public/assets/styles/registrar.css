@@ -1,0 +1,166 @@
+/* Fondo general */
+body {
+    margin: 0;
+    padding: 0;
+    background: url('/public/assets/img/fondoregistro.png') center/cover no-repeat fixed; /* ← FONDO CON IMAGEN */
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Layout principal */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+/* --- COLUMNA IZQUIERDA --- */
+.left {
+    flex: 1;
+    max-width: 450px;
+}
+
+.left h1 {
+    font-size: 42px;
+    margin-bottom: 30px;
+}
+
+/* Inputs */
+form input {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 40px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+}
+
+/* Botón principal */
+.btn {
+    width: 100%;
+    padding: 15px;
+    border-radius: 40px;
+    background: #0088ff;
+    color: white;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #0076e6;
+}
+
+/* Separador */
+.separator {
+    display: flex;
+    align-items: center;
+    margin: 30px 0 10px;
+    gap: 10px;
+}
+
+.separator span {
+    flex: 1;
+    height: 1px;
+    background: #50627f;
+}
+
+.separator p {
+    margin: 0;
+    color: #cccccc;
+}
+
+/* Texto "Continúa con" */
+.continue {
+    margin-bottom: 20px;
+    color: #cccccc;
+}
+
+/* Botones sociales */
+.social-buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.social-buttons button {
+    flex: 1;
+    padding: 12px 20px;
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: white;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.social-buttons img {
+    width: 22px;
+}
+
+/* --- COLUMNA DERECHA --- */
+.right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.robot {
+    width: 630px;
+}
+
+/* ---------------------------- */
+/*         RESPONSIVE           */
+/* ---------------------------- */
+
+@media (max-width: 992px) {
+    .robot {
+        width: 330px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    body {
+        height: auto;
+        padding: 40px 0;
+    }
+
+    .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .right {
+        order: -1;
+    }
+
+    .robot {
+        width: 280px;
+    }
+
+    .social-buttons {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .left h1 {
+        font-size: 32px;
+    }
+
+    .robot {
+        width: 230px;
+    }
+}

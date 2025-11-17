@@ -1,4 +1,25 @@
+/* =================================================== */
+/* FIX GLOBAL PARA QUE EL FOOTER SIEMPRE QUEDE ABAJO    */
+/* =================================================== */
+
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main, .hero {
+    flex: 1; /* Empuja el footer hacia abajo */
+}
+
+/* =================================================== */
 /* RESET */
+/* =================================================== */
+
 * {
     margin: 0;
     padding: 0;
@@ -14,24 +35,21 @@
     padding: 15px 40px;
     display: flex;
     align-items: center;
-    justify-content: flex-start; /* dejamos el flujo natural para nav-left */
-    position: relative;          /* para que .nav-links absolute se base aquí */
+    justify-content: flex-start;
+    position: relative;
 }
 
-/* izquierda (logo + SaferTech) */
 .nav-left {
     display: flex;
     align-items: center;
     gap: 10px;
-    z-index: 2; /* por encima de la lista centrada */
+    z-index: 2;
 }
 
-/* logo */
 .logo {
     width: 55px;
 }
 
-/* título */
 .nav-left h2,
 .nav-title {
     color: white;
@@ -39,20 +57,16 @@
     font-weight: 700;
 }
 
-/* enlaces (centro exacto) */
 .nav-links {
-    position: absolute;         /* sacamos del flujo para poder centrar exactamente */
+    position: absolute;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     gap: 40px;
     list-style: none;
-    margin: 0;
-    padding: 0;
     z-index: 1;
 }
 
-/* estilo de cada enlace (recuerda tus <li><a> dentro) */
 .nav-links a {
     color: white;
     text-decoration: none;
@@ -64,27 +78,22 @@
     text-decoration: underline;
 }
 
-/* Si tienes <li> agrega esto para evitar márgenes inesperos */
 .nav-links li {
     margin: 0;
     padding: 0;
 }
 
-/* ---------------- Responsive behavior ---------------- */
+/* ---------------- Responsive Navbar ---------------- */
 
-/* Tablets */
 @media (max-width: 992px) {
     .navbar {
         padding: 15px 30px;
     }
-
     .nav-links {
         gap: 25px;
     }
 }
 
-/* Celulares: convertimos a flujo vertical centrado,
-   mostrando logo + title en la primera línea y links debajo */
 @media (max-width: 768px) {
 
     .navbar {
@@ -95,39 +104,35 @@
         padding: 16px 20px;
     }
 
-    /* nav-left seguirá centrado en mobile (es lo habitual) */
     .nav-left {
         justify-content: center;
     }
 
-    /* restauramos nav-links al flujo normal, centrados en columna/row */
     .nav-links {
         position: static;
         transform: none;
-        display: flex;
         flex-wrap: wrap;
         justify-content: center;
         gap: 16px;
     }
 }
 
-/* Celulares pequeños */
 @media (max-width: 480px) {
     .logo {
         width: 48px;
     }
-
     .nav-title {
         font-size: 18px;
     }
-
     .nav-links a {
         font-size: 16px;
     }
 }
 
-
+/* =================================================== */
 /* HERO SECTION */
+/* =================================================== */
+
 .hero {
     background: #000;
     color: white;
@@ -165,11 +170,15 @@
     width: 450px;
 }
 
+/* =================================================== */
 /* FOOTER */
+/* =================================================== */
+
 .footer {
     background: #0a0a0a;
     color: #ccc;
     padding: 50px 80px 20px 80px;
+    margin-top: auto; /* IMPORTANTE */
 }
 
 .footer-content {
@@ -182,7 +191,7 @@
     max-width: 30%;
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* ← Ahora sí funciona */
+    align-items: flex-start;
 }
 
 .footer-logo {
@@ -227,67 +236,11 @@
 }
 
 /* =================================================== */
-/*                     RESPONSIVE                      */
+/* FOOTER RESPONSIVE */
 /* =================================================== */
 
-/* Tablets */
-@media (max-width: 992px) {
-
-    .nav-links {
-        gap: 25px;
-    }
-
-    .hero {
-        padding: 80px 40px;
-    }
-
-    .hero-text h1 {
-        font-size: 36px;
-    }
-}
-
-/* Celulares */
 @media (max-width: 768px) {
 
-    /* NAVBAR */
-    .navbar {
-        flex-direction: column;
-        text-align: center;
-        gap: 15px;
-        padding: 20px;
-    }
-
-    .nav-links {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 20px;
-    }
-
-    /* HERO */
-    .hero {
-        flex-direction: column-reverse;
-        text-align: center;
-        padding: 60px 40px;
-    }
-
-    .hero-text {
-        max-width: 100%;
-    }
-
-    .hero-text h1 {
-        font-size: 32px;
-    }
-
-    .subtext {
-        font-size: 16px;
-    }
-
-    .hero-img img {
-        width: 80%;
-        max-width: 350px;
-    }
-
-    /* FOOTER RESPONSIVE */
     .footer-content {
         flex-direction: column;
         align-items: center;
@@ -304,7 +257,6 @@
     }
 }
 
-/* Celulares pequeños */
 @media (max-width: 480px) {
 
     .nav-left h2 {

@@ -26,7 +26,7 @@
                 <span class="label">Cuenta</span>
             </button>
 
-            <button class="menu-item">
+           <button class="menu-item" id="btnPersonalizacion">
                 <span class="icon">🎨</span>
                 <span class="label">Personalización</span>
             </button>
@@ -99,6 +99,7 @@
 
 <script src="/public/assets/scripts/ajustes.js"></script>
 <script src="/public/assets/scripts/personalizacion.js"></script>
+
 <script>
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -108,6 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const btnCuenta = document.getElementById("btnCuenta");
     const btnAyuda = document.getElementById("btnAyuda");
     const btnNotificaciones = document.getElementById("btnNotificaciones");
+    const btnPersonalizacion = document.getElementById("btnPersonalizacion");
 
     // ─────────────── BOTÓN CUENTA ───────────────
     btnCuenta.addEventListener("click", () => {
@@ -119,6 +121,18 @@ document.addEventListener("DOMContentLoaded", () => {
                 contentArea.innerHTML = html;
             })
             .catch(err => console.error("Error cargando ajustes-cuenta:", err));
+    });
+
+    // ─────────────── BOTÓN PERSONALIZACIÓN ───────────────
+    btnPersonalizacion.addEventListener("click", () => {
+        chatBox.style.display = "none";
+
+        fetch("/public/html/personalizacion.html")
+            .then(res => res.text())
+            .then(html => {
+                contentArea.innerHTML = html;
+            })
+            .catch(err => console.error("Error cargando personalización:", err));
     });
 
     // ─────────────── BOTÓN AYUDA Y COMENTARIOS ───────────────

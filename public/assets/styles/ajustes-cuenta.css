@@ -3,8 +3,9 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
-    background: #033567; 
-    color: white;
+
+    /* ❗ NO ponemos background NI color */
+    /* Hereda todo del padre (ajustes) */
 }
 
 /* Contenedor principal */
@@ -12,6 +13,8 @@ body {
     display: flex;
     gap: 80px;
     padding: 40px 60px;
+
+    /* hereda colores automáticamente */
 }
 
 /* ======== SIDEBAR IZQUIERDA ======== */
@@ -45,23 +48,25 @@ body {
     border-radius: 30px;
     border: none;
     cursor: pointer;
+
+    /* Botón independiente */
     background: white;
     color: black;
+
     font-size: 15px;
     transition: 0.3s ease;
 }
 
-/* Hover  */
 .menu-btn:hover {
-    background: #1a1a1a; 
+    background: #1a1a1a;
     color: white;
 }
-
 
 /* ======== PARTE DERECHA ======== */
 
 .content {
     flex: 1;
+    /* hereda color y fondo */
 }
 
 .content-title {
@@ -69,8 +74,9 @@ body {
     font-weight: bold;
     margin-bottom: 40px;
     text-align: center;
-}
 
+    /* ❗ Sin color fijo → hereda color del modo */
+}
 
 .options-list {
     display: flex;
@@ -80,41 +86,35 @@ body {
     margin: 0 auto;
 }
 
-
 .option-item {
     display: flex;
     align-items: center;
     gap: 20px;
     padding: 15px 20px;
     border-radius: 15px;
+
+    /* ❗ Nada de backgrounds */
+    /* ❗ Nada de border-color fijo */
     background: transparent;
-    font-size: 19px;
-    cursor: pointer;
     border: 2px solid transparent;
+
+    /* texto hereda color del modo */
+    cursor: pointer;
     transition: 0.3s ease;
 }
 
 
-.option-item.selected {
-    padding: 18px 25px;
-    border-radius: 20px;
-}
-
 
 .option-item .icon img {
-    width: 28px;
+    width: var(--icon-size, 28px);
 }
-
 
 .option-item.delete {
     color: #ff3333;
 }
 
 .option-item.delete .icon img {
-    filter: brightness(0) saturate(100%) invert(34%) sepia(90%) saturate(7478%)
-            hue-rotate(353deg) brightness(96%) contrast(112%);
+    filter: brightness(0) saturate(100%) invert(34%) sepia(90%)
+            saturate(7478%) hue-rotate(353deg)
+            brightness(96%) contrast(112%);
 }
-
-
-
-

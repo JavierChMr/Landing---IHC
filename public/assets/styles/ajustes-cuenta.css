@@ -4,8 +4,6 @@ body {
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
 
-    /* ❗ NO ponemos background NI color */
-    /* Hereda todo del padre (ajustes) */
 }
 
 /* Contenedor principal */
@@ -14,7 +12,7 @@ body {
     gap: 80px;
     padding: 40px 60px;
 
-    /* hereda colores automáticamente */
+    
 }
 
 /* ======== SIDEBAR IZQUIERDA ======== */
@@ -49,7 +47,7 @@ body {
     border: none;
     cursor: pointer;
 
-    /* Botón independiente */
+    
     background: white;
     color: black;
 
@@ -66,7 +64,7 @@ body {
 
 .content {
     flex: 1;
-    /* hereda color y fondo */
+
 }
 
 .content-title {
@@ -75,7 +73,7 @@ body {
     margin-bottom: 40px;
     text-align: center;
 
-    /* ❗ Sin color fijo → hereda color del modo */
+    
 }
 
 .options-list {
@@ -93,16 +91,12 @@ body {
     padding: 15px 20px;
     border-radius: 15px;
 
-    /* ❗ Nada de backgrounds */
-    /* ❗ Nada de border-color fijo */
     background: transparent;
     border: 2px solid transparent;
 
-    /* texto hereda color del modo */
     cursor: pointer;
     transition: 0.3s ease;
 }
-
 
 
 .option-item .icon img {
@@ -117,4 +111,15 @@ body {
     filter: brightness(0) saturate(100%) invert(34%) sepia(90%)
             saturate(7478%) hue-rotate(353deg)
             brightness(96%) contrast(112%);
+}
+
+.volver-btn {
+    padding: 8px 14px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    background: var(--accent, #4b4bff);
+    color: white;
+    font-size: 14px;
+    margin-bottom: 15px;
 }

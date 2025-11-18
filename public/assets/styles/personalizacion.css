@@ -77,3 +77,14 @@ select{ padding:8px; font-size:var(--font-size); border-radius:6px; border:none;
 .back-arrow:hover{
     transform:translateX(-4px);
 }
+
+.volver-btn {
+    padding: 8px 14px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    background: var(--accent, #4b4bff);
+    color: white;
+    font-size: 14px;
+    margin-bottom: 15px;
+}

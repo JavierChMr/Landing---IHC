@@ -41,6 +41,11 @@
                 <span class="label">Ayuda y Comentarios</span>
             </button>
 
+            <button class="menu-item" id="btnVolverChatbot">
+                <span class="icon">⬅</span>
+                <span class="label">Volver al Chat</span>
+            </button>
+
         </div>
 
         <!-- USER INFO -->
@@ -109,44 +114,64 @@ document.addEventListener("DOMContentLoaded", () => {
     const btnCuenta = document.getElementById("btnCuenta");
     const btnAyuda = document.getElementById("btnAyuda");
     const btnPersonalizacion = document.getElementById("btnPersonalizacion");
+    const btnVolverChatbot = document.getElementById("btnVolverChatbot");
 
     // ─────────────── BOTÓN CUENTA ───────────────
     btnCuenta.addEventListener("click", () => {
         chatBox.style.display = "none";
-
         fetch("/public/html/ajustes-cuenta.html")
             .then(res => res.text())
             .then(html => {
                 contentArea.innerHTML = html;
-            })
-            .catch(err => console.error("Error cargando ajustes-cuenta:", err));
+                activarBotonesInternos();  // <-- MUY IMPORTANTE
+            });
     });
 
     // ─────────────── BOTÓN PERSONALIZACIÓN ───────────────
     btnPersonalizacion.addEventListener("click", () => {
         chatBox.style.display = "none";
-
         fetch("/public/html/personalizacion.html")
             .then(res => res.text())
             .then(html => {
                 contentArea.innerHTML = html;
-            })
-            .catch(err => console.error("Error cargando personalización:", err));
+                activarBotonesInternos();
+            });
     });
 
-    // ─────────────── BOTÓN AYUDA Y COMENTARIOS ───────────────
+    // ─────────────── BOTÓN AYUDA ───────────────
     btnAyuda.addEventListener("click", () => {
         chatBox.style.display = "none";
-
         fetch("/public/html/ajuste-ayudacomentarios.html")
             .then(res => res.text())
             .then(html => {
                 contentArea.innerHTML = html;
-            })
-            .catch(err => console.error("Error cargando ajustes-ayuda:", err));
+                activarBotonesInternos();
+            });
+    });
+
+    // ─────────────── BOTÓN GENERAL "VOLVER AL CHATBOT" ───────────────
+    btnVolverChatbot.addEventListener("click", () => {
+        window.location.href = "/public/html/chatbot.html";
     });
 
 });
+
+/* ─────────────────────────────────────────────────────
+   Esta función permite que los botones internos
+   (dentro de ajustes-cuenta, personalización, etc.)
+   también puedan redirigir al chatbot.
+   ───────────────────────────────────────────────────── */
+function activarBotonesInternos() {
+
+    const btnInterno = document.getElementById("btnVolverChatInterno");
+
+    if (btnInterno) {
+        btnInterno.addEventListener("click", () => {
+            window.location.href = "/public/html/chatbot.html";
+        });
+    }
+}
 </script>
+
 </body>
 </html>

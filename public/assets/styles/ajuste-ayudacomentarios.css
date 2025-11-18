@@ -33,3 +33,15 @@
 .icono {
     font-size: 22px;
 }
+
+
+.volver-btn {
+    padding: 8px 14px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    background: var(--accent, #4b4bff);
+    color: white;
+    font-size: 14px;
+    margin-bottom: 15px;
+}

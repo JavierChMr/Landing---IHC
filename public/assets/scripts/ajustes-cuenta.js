@@ -1,7 +1,7 @@
-// Selecciona todos los botones del menú
+
 const botones = document.querySelectorAll('.menu-btn');
 
-// Cuando hago clic en alguno
+
 botones.forEach(boton => {
     boton.addEventListener('click', () => {
 

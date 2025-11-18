@@ -78,3 +78,56 @@ select{ padding:8px; font-size:var(--font-size); border-radius:6px; border:none;
 .back-arrow:hover{
     transform:translateX(-4px);
 }
+
+
+/* ░░░ HACER QUE EL PANEL SE VEA COMO .ayuda-contenedor ░░░ */
+.settings-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;      /* ← Centro horizontal */
+    justify-content: center;  /* ← Centro vertical */
+    text-align: center;       
+    gap: 28px;                /* ← mismo espaciado */
+    padding-top: 40px;
+}
+
+/* Títulos centrados como en .ayuda-contenedor */
+.title {
+    text-align: center;
+    width: 100%;
+}
+
+/* Items centrados */
+.setting-item {
+    width: 100%;
+    max-width: 340px;       /* ← similar a la card centrada del ejemplo */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Select estilado para verse más uniforme */
+.setting-item select {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    background: rgba(255,255,255,0.08);
+    border: 2px solid rgba(255,255,255,0.25);
+    color: white;
+    border-radius: 8px;
+    font-size: var(--font-size);
+}
+
+/* Subtítulos centrados */
+.subtitle {
+    font-size: 20px;
+    margin-bottom: 6px;
+    text-align: center;
+}
+
+/* Ajuste para que todo quede centrado incluso en pantallas grandes */
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

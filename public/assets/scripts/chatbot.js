@@ -1,4 +1,4 @@
-// chatbot.js — versión actualizada (mensajes alineados y menú usuario)
+
 
 const LS_KEY = "safertech_chats_v1";
 const LS_CURRENT = "safertech_current_v1";
@@ -21,7 +21,7 @@ const logoutBtn = document.getElementById("logoutBtn");
 let chats = [];
 let currentChatId = null;
 
-// --- utils ---
+
 function uid() {
     return "c_" + Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
 }
@@ -60,7 +60,7 @@ function createNewChat() {
     renderCurrentChat();
 }
 
-// --- render current chat ---
+
 function renderCurrentChat() {
     const chat = chats.find(c => c.id === currentChatId);
 
@@ -81,16 +81,16 @@ function renderCurrentChat() {
 
     hideWelcome();
 
-    // Append messages in order
+    
     chat.messages.forEach(m => appendMessageToWindow(m.text, m.who));
 
-    // ensure scroll to bottom
+    
     setTimeout(() => {
         chatWindow.scrollTop = chatWindow.scrollHeight;
     }, 30);
 }
 
-// --- welcome screen ---
+
 function showWelcome() {
     welcomeScreen.style.display = "block";
     chatWindow.style.display = "block";
@@ -101,13 +101,12 @@ function hideWelcome() {
     chatWindow.style.display = "block";
 }
 
-// --- append message ---
-// Now creates element nodes and uses classes so CSS align-self works.
+
 function appendMessageToWindow(text, who) {
     const wrapper = document.createElement("div");
     wrapper.className = "message " + (who === "user" ? "user" : "bot");
 
-    // allow multiline and keep simple formatting
+    
     const p = document.createElement("div");
     p.innerHTML = escapeHtml(text).replace(/\n/g, "<br>");
     wrapper.appendChild(p);
@@ -116,7 +115,7 @@ function appendMessageToWindow(text, who) {
     chatWindow.scrollTop = chatWindow.scrollHeight;
 }
 
-// --- send message ---
+
 function enviarMensaje() {
     const text = mensajeInput.value.trim();
     if (!text) return;
@@ -126,10 +125,10 @@ function enviarMensaje() {
     const chat = chats.find(c => c.id === currentChatId);
     if (!chat) return;
 
-    // push user message
+
     chat.messages.push({ who: "user", text, ts: Date.now() });
 
-    // set title if needed
+   
     if (chat.title === "Chat sin título" && text.length > 2) {
         chat.title = text.length > 28 ? text.slice(0, 28) + "..." : text;
     }
@@ -138,7 +137,7 @@ function enviarMensaje() {
     renderCurrentChat();
     mensajeInput.value = "";
 
-    // bot response (simulado)
+   
     setTimeout(() => {
         const botResp = getBotResponse(text);
         chat.messages.push({ who: "bot", text: botResp, ts: Date.now() });
@@ -147,7 +146,7 @@ function enviarMensaje() {
     }, 500);
 }
 
-// --- bot rules ---
+
 function getBotResponse(text) {
     const t = (text || "").toLowerCase();
 
@@ -169,7 +168,7 @@ function getBotResponse(text) {
     return "Interesante. ¿Quieres analizarlo, compararlo o traducirlo?";
 }
 
-// --- quick actions ---
+
 function accionRapida(tipo) {
     if (!currentChatId) createNewChat();
     const chat = chats.find(c => c.id === currentChatId);
@@ -195,7 +194,7 @@ function accionRapida(tipo) {
     }, 350);
 }
 
-// --- LIST PANEL (fav + historial) ---
+
 function openListPanel(type) {
     listPanel.innerHTML = "";
     listPanel.style.display = "block";
@@ -243,12 +242,12 @@ function closeListPanel() {
     listPanel.setAttribute("aria-hidden", "true");
 }
 
-// --- open chat ---
+
 function openChatById(id) {
     const c = chats.find(x => x.id === id);
     if (!c) return;
 
-    // reorder list: open chat to top
+    
     chats = chats.filter(x => x.id !== id);
     chats.unshift(c);
 
@@ -256,11 +255,11 @@ function openChatById(id) {
     saveAll();
     renderCurrentChat();
 
-    // close sidebar in mobile
+ 
     sidebar.classList.remove("open");
 }
 
-// --- favorite ---
+
 function toggleFavoriteCurrent() {
     const chat = chats.find(c => c.id === currentChatId);
     if (!chat) return;
@@ -270,7 +269,7 @@ function toggleFavoriteCurrent() {
     renderCurrentChat();
 }
 
-// --- delete chat ---
+
 function deleteCurrent() {
     if (!currentChatId) return;
     const idx = chats.findIndex(c => c.id === currentChatId);
@@ -286,12 +285,12 @@ function deleteCurrent() {
     renderCurrentChat();
 }
 
-// --- ajustes ---
+
 function goAjustes() {
     window.location.href = "ajustes.html";
 }
 
-// --- EVENTS ---
+
 document.getElementById("btnNuevo").addEventListener("click", () => {
     createNewChat();
     closeListPanel();
@@ -315,21 +314,21 @@ document.querySelectorAll(".pill").forEach(b => {
 starBtn.addEventListener("click", toggleFavoriteCurrent);
 deleteBtn.addEventListener("click", deleteCurrent);
 
-// mobile sidebar
+
 hamburger.addEventListener("click", () => {
     sidebar.classList.toggle("open");
 });
 
-// close list clicking outside
+
 document.addEventListener("click", e => {
-    // close list panel if click outside
+    
     if (!e.target.closest(".sidebar") &&
         !e.target.closest("#btnFavoritos") &&
         !e.target.closest("#btnHistorial")) {
         closeListPanel();
     }
 
-    // close user menu if clicked outside
+    
     if (!e.target.closest("#userBox") && !e.target.closest("#userMenu")) {
         if (userMenu) {
             userMenu.style.display = "none";
@@ -338,7 +337,7 @@ document.addEventListener("click", e => {
     }
 });
 
-// --- USER MENU (option A) ---
+
 userBox.addEventListener("click", (ev) => {
     ev.stopPropagation();
     if (!userMenu) return;
@@ -352,16 +351,15 @@ userBox.addEventListener("click", (ev) => {
     }
 });
 
-// logout
+
 if (logoutBtn) {
     logoutBtn.addEventListener("click", () => {
-        // Cleanup (optional)
-        // localStorage.removeItem(LS_CURRENT); // keep chats if you want
+
         window.location.href = "login.html";
     });
 }
 
-// INIT
+
 loadAll();
 
 if (!chats.length) {

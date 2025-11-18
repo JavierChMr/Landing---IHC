@@ -5,7 +5,7 @@ const logoutBtn = document.getElementById("logoutBtn");
 const userBox = document.getElementById("userBox");
 const userMenu = document.getElementById("userMenu");
 
-// Cargar preferencias al inicio
+
 function cargarPreferencias() {
     const modo = localStorage.getItem("modo") || "claro";
     const iconSize = localStorage.getItem("iconSize") || "mediano";
@@ -48,7 +48,7 @@ function aplicarFontSize(size){
     document.documentElement.style.setProperty('--font-size',px);
 }
 
-// Guardar cambios y aplicarlos
+
 modoSelect.addEventListener("change", e => {
     aplicarModo(e.target.value);
     localStorage.setItem("modo", e.target.value);
@@ -62,7 +62,7 @@ fontSizeSelect.addEventListener("change", e => {
     localStorage.setItem("fontSize", e.target.value);
 });
 
-// User menu y cerrar sesión
+
 userBox.addEventListener("click", () => {
     if(!userMenu) return;
     const shown = userMenu.getAttribute("aria-hidden")==="false";
@@ -82,8 +82,7 @@ logoutBtn.addEventListener("click", () => {
 cargarPreferencias();
 
 
-// ░░░ BOTÓN DE FLECHA VOLVER ░░░
 const backArrow = document.getElementById("backArrow");
 backArrow.addEventListener("click", () => {
-    window.location.href = "ajustes.html"; // cambia si quieres otra ruta
+    window.location.href = "ajustes.html"; 
 });

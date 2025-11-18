@@ -46,7 +46,7 @@ body{
     margin-bottom: 25px;
     margin-top: 10px;
 
-    /* DESPLAZAR 2CM A LA IZQUIERDA */
+    
     margin-left: -0.5cm;
 }
 
@@ -54,7 +54,7 @@ body{
     font-size: 28px;
 }
 
-/* menu items */
+
 .menu-item{
     display:flex;
     gap:12px;
@@ -77,7 +77,7 @@ body{
     opacity:0.8;
 }
 
-/* user bottom */
+
 .sidebar-bottom{ margin-top:auto; position:relative; }
 
 .user-box{
@@ -92,7 +92,7 @@ body{
 
 .user-name{ font-size:14px; }
 
-/* popup menu */
+
 .user-menu{
     position:absolute;
     left:22px;
@@ -150,7 +150,7 @@ body{
     font-weight:700;
 }
 
-/* Content */
+
 
 .big-title{
     font-size:48px;
@@ -226,7 +226,7 @@ body{
     .search-bar{ width:100%; }
 }
 
-/* CUADRO DE RESPUESTA */
+
 .response-box{
     width:70%;
     margin:30px auto;
@@ -237,7 +237,7 @@ body{
     color:white;
     font-size:16px;
     backdrop-filter:blur(4px);
-    display:none; /* Oculto hasta que haya respuesta */
+    display:none; 
 }
 
 .response-box p{

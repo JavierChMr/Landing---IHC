@@ -92,12 +92,12 @@ document.addEventListener("click", (e) => {
     }
 });
 
-// ----- FUNCIONES AUXILIARES -----
+
 function showResponse(text) {
     if (!responseBox || !responseText) return;
     responseText.textContent = text;
     responseBox.style.display = "block";
-    // opcional: desplazarse a la caja en pantallas pequeñas
+
     responseBox.scrollIntoView({ behavior: "smooth", block: "center" });
 }
 function hideResponse() {
@@ -105,17 +105,16 @@ function hideResponse() {
     responseBox.style.display = "none";
 }
 
-// ----- FUNCIONES RÁPIDAS (pill buttons) -----
-// Queremos QUE NO toquen la barra blanca; SOLO muestran la respuesta en el cuadro.
+
 
 if (pills.length >= 3) {
     const [btnAnalizar, btnComparar, btnTraducir] = pills;
 
     btnAnalizar.addEventListener("click", () => {
         const msg = "Analiza el siguiente código y dime posibles errores:";
-        // NO tocamos searchInput.value
+       
         showResponse(msg);
-        // opcional: enfocar el cuadro de respuesta (no el input)
+       
     });
 
     btnComparar.addEventListener("click", () => {
@@ -129,34 +128,33 @@ if (pills.length >= 3) {
     });
 }
 
-// Si el usuario escribe en la barra blanca, ocultamos la respuesta (opcional)
-// Comentarlo si prefieres no ocultarla al escribir.
+
 if (searchInput) {
     searchInput.addEventListener("input", () => {
-        // hideResponse(); // descomenta si quieres que tecleando se oculte
+        
     });
 }
 
-// Inicializar estado: ocultar responseBox
+
 hideResponse();
 
 document.getElementById("btnCuenta").addEventListener("click", function () {
 
-    // Ocultar chat
+   
     document.getElementById("chat-area").style.display = "none";
 
-    // Mostrar contenedor donde irá la vista de cuenta
+    
     const contentArea = document.getElementById("content-area");
     contentArea.style.display = "block";
 
-    // Cargar el HTML
+  
     fetch("/public/ajustes-cuenta.html")
         .then(response => response.text())
         .then(data => {
 
             contentArea.innerHTML = data;
 
-            // Cargar CSS si no existe
+            
             const cssId = "ajustesCuentaCSS";
             if (!document.getElementById(cssId)) {
                 const link = document.createElement("link");
@@ -166,7 +164,7 @@ document.getElementById("btnCuenta").addEventListener("click", function () {
                 document.head.appendChild(link);
             }
 
-            // Ejecutar JS del módulo
+          
             const script = document.createElement("script");
             script.src = "/public/assets/scripts/ajustes-cuenta.js";
             document.body.appendChild(script);
@@ -174,15 +172,15 @@ document.getElementById("btnCuenta").addEventListener("click", function () {
 });
 
 
-// seleccionamos el botón de Personalización
-const personalizacionBtn = document.querySelectorAll(".menu-item")[1]; // si es el segundo botón
+
+const personalizacionBtn = document.querySelectorAll(".menu-item")[1]; 
 
 personalizacionBtn.addEventListener("click", () => {
     window.location.href = "personalizacion.html";
 });
 
-// ----- BOTÓN DE FLECHA VOLVER -----
+
 const backArrow = document.getElementById("backArrow");
 backArrow.addEventListener("click", () => {
-    window.location.href = "chatbot.html"; // puedes cambiarlo
+    window.location.href = "chatbot.html"; 
 });

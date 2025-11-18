@@ -1,9 +1,9 @@
-// ----- OBTENER ELEMENTOS -----
+
 const selects = document.querySelectorAll(".form-group select");
 const btnEnviar = document.querySelector(".btn-enviar");
 const resultadoCard = document.querySelector(".resultado-card p");
 
-// ----- BASE DE DATOS DE RESPUESTAS -----
+
 const respuestas = {
     "Bucles": {
         "Principiante": `Un bucle es una parte del código que se repite varias veces. 
@@ -61,14 +61,14 @@ const respuestas = {
     }
 };
 
-// ----- AL HACER CLICK EN ENVIAR -----
+
 btnEnviar.addEventListener("click", () => {
 
-    const area = selects[0].value;  // (no se usa pero queda listo para futuro)
+    const area = selects[0].value;  
     const nivel = selects[1].value;
     const tema = selects[2].value;
 
-    // Verificar si existe combinación
+
     if (respuestas[tema] && respuestas[tema][nivel]) {
         resultadoCard.textContent = respuestas[tema][nivel];
     } else {

@@ -8,23 +8,23 @@ document.getElementById("formRegistro").addEventListener("submit", function (eve
 
     let errores = [];
 
-    // Validación del nombre
+
     if (nombre.length < 2) {
         errores.push("El nombre debe tener al menos 2 caracteres.");
     }
 
-    // Validación del correo
+  
     let regexCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!regexCorreo.test(correo)) {
         errores.push("Ingresa un correo válido.");
     }
 
-    // Validación de la contraseña
+   
     if (contrasena.length < 8) {
         errores.push("La contraseña debe tener al menos 8 caracteres.");
     }
 
-    // Mostrar errores en el HTML
+   
     let boxErrores = document.getElementById("errores");
     boxErrores.innerHTML = "";
 
@@ -36,12 +36,12 @@ document.getElementById("formRegistro").addEventListener("submit", function (eve
             p.style.margin = "5px 0";
             boxErrores.appendChild(p);
         });
-        return; // Detiene el envío
+        return; 
     }
 
-    // Si todo está validado
+    
     alert("Registro exitoso");
 
-    // Redirige al login después del alert
+    
     window.location.href = "login.html";
 });

@@ -1,4 +1,4 @@
-/* RESET GENERAL */
+
 * {
     margin: 0;
     padding: 0;
@@ -6,7 +6,7 @@
     font-family: Arial, sans-serif;
 }
 
-/* --- FIX PARA QUE EL FOOTER NO SUBA --- */
+
 html, body {
     height: 100%;
     background: #000;
@@ -20,10 +20,10 @@ body {
 }
 
 .about-section {
-    flex: 1; /* el contenido empuja el footer hacia abajo */
+    flex: 1;
 }
 
-/* ================= NAVBAR (ACTUALIZADA COMO LA OTRA) ================= */
+
 
 .navbar {
     width: 100%;
@@ -35,7 +35,7 @@ body {
     position: relative;
 }
 
-/* izquierda (logo + título) */
+
 .nav-left {
     display: flex;
     align-items: center;
@@ -54,7 +54,7 @@ body {
     font-weight: 700;
 }
 
-/* Enlaces centrados */
+
 .nav-links {
     position: absolute;
     left: 50%;
@@ -75,7 +75,7 @@ body {
     text-decoration: underline;
 }
 
-/* ---------------- Responsive NAVBAR ---------------- */
+
 
 @media (max-width: 992px) {
     .navbar {
@@ -125,7 +125,7 @@ body {
     }
 }
 
-/* ===================== SECCIÓN CARDS ===================== */
+
 
 .about-section {
     padding: 80px 40px;
@@ -170,7 +170,7 @@ body {
     background: #0a0a0a;
     color: #ccc;
     padding: 50px 80px 20px 80px;
-    margin-top: auto; /* garantiza que quede abajo SIEMPRE */
+    margin-top: auto; 
 }
 
 .footer-content {
@@ -227,7 +227,7 @@ body {
     font-size: 14px;
 }
 
-/* ===================== RESPONSIVE CARDS ===================== */
+
 
 @media (max-width: 992px) {
 
@@ -263,7 +263,7 @@ body {
         width: 100%;
     }
 
-    /* Footer responsive */
+   
     .footer-content {
         flex-direction: column;
         align-items: center;

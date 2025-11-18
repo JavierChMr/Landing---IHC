@@ -62,7 +62,6 @@ select{ padding:8px; font-size:var(--font-size); border-radius:6px; border:none;
     .title{ font-size:32px; }
 }
 
-/* ░░░ FLECHA DE RETROCESO ░░░ */
 .back-arrow{
     position:absolute;
     top:18px;

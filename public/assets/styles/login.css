@@ -5,7 +5,7 @@
     font-family: Arial, sans-serif;
 }
 
-/* Fondo con tu imagen */
+
 body {
     background: url("/public/assets/img/fondoregistro.png") no-repeat center center fixed;
     background-size: cover;
@@ -24,24 +24,24 @@ body {
     text-align: center;
 }
 
-/* TITULO MÁS A LA IZQUIERDA */
+
 .title {
     font-size: 46px;
     font-weight: 700;
     margin-bottom: 35px;
     text-align: left;
-    margin-left: -5px; /* Ajustado más a la izquierda */
+    margin-left: -5px; 
 }
 
-/* LABELS MÁS SEPARADOS DE LOS INPUTS */
+
 .label {
     text-align: left;
-    margin: 22px 0 10px; /* Más separados del cuadro */
+    margin: 22px 0 10px; 
     font-size: 15px;
     font-weight: bold;
 }
 
-/* INPUTS */
+
 input {
     width: 100%;
     padding: 14px;
@@ -56,7 +56,7 @@ input::placeholder {
     color: gray;
 }
 
-/* BOTÓN */
+
 .btn-login {
     width: 100%;
     padding: 14px;
@@ -95,7 +95,7 @@ input::placeholder {
     background: rgba(255, 255, 255, .3);
 }
 
-/* SOCIAL */
+
 .social {
     display: flex;
     justify-content: center;
@@ -128,21 +128,19 @@ input::placeholder {
     color: #4aa9ff;
 }
 
-/* RESPONSIVE */
 
-/* Tablets */
 @media (max-width: 992px) {
     .container { width: 380px; }
     .title { font-size: 40px; }
 }
 
-/* Celulares grandes */
+
 @media (max-width: 768px) {
     .container { max-width: 360px; }
     .title { font-size: 34px; }
 }
 
-/* Celulares pequeños */
+
 @media (max-width: 480px) {
     body { padding: 10px; }
 

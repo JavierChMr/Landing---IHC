@@ -1,4 +1,4 @@
-/* RESET + base */
+
 * { box-sizing: border-box; margin: 0; padding: 0; font-family: Inter, Arial, sans-serif; }
 :root{
     --bg:#05345c;
@@ -7,10 +7,10 @@
     --accent:#3b84ff;
 }
 
-/* page */
+
 body { background: var(--bg); color: #fff; height: 100vh; overflow: hidden; }
 
-/* app layout */
+
 .app { display: flex; height: 100vh; }
 
 /* ─────────────────────────────── SIDEBAR ─────────────────────────────── */
@@ -27,7 +27,7 @@ body { background: var(--bg); color: #fff; height: 100vh; overflow: hidden; }
 }
 .logo-img { width:110px; display:block; }
 
-/* menu buttons */
+
 .menu-item {
     display:flex;
     gap: 12px;
@@ -45,7 +45,7 @@ body { background: var(--bg); color: #fff; height: 100vh; overflow: hidden; }
 
 .menu-item .icon { width:26px; height:26px; opacity:0.8 }
 
-/* history / favs panel */
+
 .list-panel {
     margin-top: 12px;
     max-height: 40vh;
@@ -78,7 +78,7 @@ body { background: var(--bg); color: #fff; height: 100vh; overflow: hidden; }
     opacity:0.5;
 }
 
-/* bottom */
+
 .sidebar-bottom { margin-top:auto; position:relative; } /* relative to position popup */
 .user-box {
     display:flex;
@@ -91,11 +91,11 @@ body { background: var(--bg); color: #fff; height: 100vh; overflow: hidden; }
 }
 .user-name { font-size:14px; }
 
-/* minimal user popup menu (option A) */
+
 .user-menu {
     position: absolute;
     left: 22px;
-    bottom: 72px; /* above the user box */
+    bottom: 72px; 
     background: rgba(0,0,0,0.75);
     border: 1px solid rgba(255,255,255,0.06);
     backdrop-filter: blur(6px);
@@ -128,7 +128,7 @@ body { background: var(--bg); color: #fff; height: 100vh; overflow: hidden; }
     overflow:hidden;
 }
 
-/* HEADER */
+
 .main-header {
     display:flex;
     justify-content:space-between;
@@ -145,7 +145,7 @@ body { background: var(--bg); color: #fff; height: 100vh; overflow: hidden; }
 }
 .title { font-size:40px; font-weight:700; }
 
-/* WELCOME SCREEN */
+
 .welcome {
     text-align:center;
     padding: 40px 0 22px 0;
@@ -167,7 +167,6 @@ body { background: var(--bg); color: #fff; height: 100vh; overflow: hidden; }
     cursor:pointer;
 }
 
-/* CHAT ─────────────────────────────────────────────── */
 .chat-area {
     display:flex;
     flex-direction:column;
@@ -182,13 +181,12 @@ body { background: var(--bg); color: #fff; height: 100vh; overflow: hidden; }
     overflow-y:auto;
     margin-bottom:18px;
 
-    /* layout column, messages stacked */
     display:flex;
     flex-direction:column;
     gap: 14px;
 }
 
-/* messages */
+
 .message {
     padding:12px 16px;
     border-radius:14px;
@@ -198,7 +196,7 @@ body { background: var(--bg); color: #fff; height: 100vh; overflow: hidden; }
     line-height:1.45;
 }
 
-/* Usuario (izquierda) */
+
 .message.user {
     background:white;
     color:black;
@@ -207,7 +205,7 @@ body { background: var(--bg); color: #fff; height: 100vh; overflow: hidden; }
     margin-top:10px;
 }
 
-/* Bot (derecha) */
+
 .message.bot {
     background:rgba(255,255,255,0.95);
     color:black;
@@ -216,7 +214,7 @@ body { background: var(--bg); color: #fff; height: 100vh; overflow: hidden; }
     margin-top:10px;
 }
 
-/* INPUT AREA ───────────────────────────────────────────── */
+
 .input-wrapper { padding: 0 12px 12px 12px; }
 .input-inner {
     background:white;
@@ -244,14 +242,14 @@ body { background: var(--bg); color: #fff; height: 100vh; overflow: hidden; }
 
 /* ─────────────────────────────── RESPONSIVE ─────────────────────────────── */
 
-/* Tablet */
+
 @media (max-width: 950px) {
     .main { padding: 20px; }
     .title { font-size:32px; }
     .chat-area { height: calc(100vh - 200px); }
 }
 
-/* Mobile */
+
 @media (max-width: 760px) {
 
     .sidebar {

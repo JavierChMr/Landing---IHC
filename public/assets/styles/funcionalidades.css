@@ -6,7 +6,7 @@
     font-family: Arial, sans-serif;
 }
 
-/* ---------------- NAVBAR EXACTO ---------------- */
+
 
 .navbar {
     width: 100%;
@@ -57,7 +57,7 @@
     text-decoration: underline;
 }
 
-/* ---------------- RESPONSIVE NAV ---------------- */
+
 
 @media (max-width: 992px) {
     .navbar {
@@ -83,8 +83,6 @@
     }
 }
 
-/* ---------------- COLOR ROOT ---------------- */
-
 :root{
     --bg-elegant-1: #0A1630;
     --bg-elegant-2: #081225;
@@ -92,14 +90,12 @@
     --accent: #022C60;
 }
 
-/* ============================= */
-/*   SECCIÓN PERSONALIZACIÓN     */
-/* ============================= */
+
 
 .func-section {
     padding: 70px 80px;
     background: linear-gradient(180deg, var(--bg-elegant-1), var(--bg-elegant-2));
-    margin-bottom: 0; /* QUITA ESPACIO BLANCO */
+    margin-bottom: 0; 
 }
 
 .func-title {
@@ -115,7 +111,7 @@
     align-items: flex-start;
 }
 
-/* FORM */
+
 
 .form-area {
     width: 45%;
@@ -167,7 +163,7 @@
     background: #001B3F;
 }
 
-/* RESULTADO */
+
 
 .resultado-card {
     width: 50%;
@@ -183,7 +179,7 @@
     color: var(--accent);
 }
 
-/* RESPONSIVE PERSONALIZACIÓN */
+
 @media (max-width: 768px) {
     .func-container {
         flex-direction: column;
@@ -201,7 +197,7 @@
 .explicacion-section {
     padding: 70px 60px;
     background: linear-gradient(180deg, var(--bg-elegant-1), var(--bg-elegant-2));
-    margin: 0; /* QUITA ESPACIO EN BLANCO */
+    margin: 0; 
 }
 
 .explicacion-container {
@@ -240,7 +236,7 @@
     margin-top: 20px;
 }
 
-/* RESPONSIVE */
+
 @media (max-width: 900px) {
     .explicacion-container {
         flex-direction: column;
@@ -255,7 +251,7 @@
 .testimonios-section {
     background: linear-gradient(180deg, var(--bg-elegant-1), var(--bg-elegant-2));
     padding: 70px 0 70px;
-    margin: 0; /* SIN ESPACIO EN BLANCO */
+    margin: 0; 
     text-align: center;
 }
 
@@ -299,7 +295,7 @@
     margin-bottom: 10px;
 }
 
-/* FOOTER */
+
 .footer {
     background: #0a0a0a;
     color: #ccc;
@@ -316,7 +312,7 @@
     max-width: 30%;
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* ← Ahora sí funciona */
+    align-items: flex-start; 
 }
 
 .footer-logo {
@@ -360,7 +356,7 @@
     font-size: 14px;
 }
 
-/* RESPONSIVE FOOTER */
+
 @media (max-width: 768px) {
     .footer-content {
         flex-direction: column;
@@ -370,9 +366,7 @@
 }
 
 
-/* ============================= */
-/*  RESULTADO PERSONALIZADO BONITO */
-/* ============================= */
+
 
 .resultado-card {
     width: 50%;
@@ -386,7 +380,7 @@
     animation: fadeIn 0.4s ease;
 }
 
-/* Esferas decorativas */
+
 .resultado-card::before {
     content: "";
     position: absolute;
@@ -409,7 +403,7 @@
     border-radius: 50%;
 }
 
-/* Título */
+
 .resultado-card h3 {
     font-size: 26px;
     font-weight: 700;
@@ -418,7 +412,7 @@
     margin-bottom: 25px;
 }
 
-/* Texto de resultado */
+
 #resultado-text {
     background: white;
     border-left: 6px solid var(--accent);
@@ -429,10 +423,10 @@
     line-height: 1.6;
     box-shadow: 0 4px 14px rgba(0,0,0,0.08);
     animation: slideUp 0.45s ease;
-    white-space: pre-line; /* Mantiene saltos de línea del JS */
+    white-space: pre-line; 
 }
 
-/* Animaciones */
+
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(12px); }
     to { opacity: 1; transform: translateY(0); }

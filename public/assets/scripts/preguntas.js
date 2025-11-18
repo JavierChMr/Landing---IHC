@@ -2,7 +2,6 @@ const preguntas = document.querySelectorAll(".faq-box");
 
 preguntas.forEach(box => {
 
-    // Ahora el click es sobre TODA la caja
     box.addEventListener("click", () => {
 
         const answer = box.querySelector(".faq-answer");
@@ -10,7 +9,7 @@ preguntas.forEach(box => {
 
         const isOpen = answer.style.display === "block";
 
-        // Alternar estado
+
         answer.style.display = isOpen ? "none" : "block";
         icon.textContent = isOpen ? "+" : "−";
 

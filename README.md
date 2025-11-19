@@ -1,6 +1,6 @@
 ## Features List
 
-Este documento contiene el contenido completo de todos los archivos de características (features) del sistema SaferTech.
+Este documento contiene el contenido de todos los archivos de features del sistema SaferTech.
 
 ---
 

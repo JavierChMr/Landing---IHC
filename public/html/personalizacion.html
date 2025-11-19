@@ -12,26 +12,7 @@
 
 <div class="app">
 
-    <!-- SIDEBAR -->
-    <aside class="sidebar" id="sidebar">
 
-        
-        <button class="back-arrow" id="backArrow">←</button>
-
-        <h2 class="sidebar-title">
-            <span class="sidebar-icon">🎨</span> Personalización
-        </h2>
-
-        <div class="sidebar-bottom">
-            <div class="user-box" id="userBox">
-                <span class="user-icon">👤</span>
-                <span class="user-name" id="sidebarUser">admin1</span>
-            </div>
-            <div id="userMenu" class="user-menu" aria-hidden="true">
-                <button id="logoutBtn" class="user-menu-item">Cerrar sesión</button>
-            </div>
-        </div>
-    </aside>
 
     <!-- MAIN -->
     <main class="main">
@@ -40,37 +21,34 @@
         </header>
 
         <section class="settings-content">
-            <h2 class="big-title">Ajustes de Personalización</h2>
+<h2 class="big-title">Ajustes de Personalización</h2>
 
-            <div class="setting-item">
-                <label for="modoSelect" class="subtitle">Modo:</label>
-                <select id="modoSelect">
-                    <option value="claro">Claro</option>
-                    <option value="oscuro">Oscuro</option>
-                </select>
-            </div>
-
-            <div class="setting-item">
-                <label for="iconSizeSelect" class="subtitle">Tamaño de iconos:</label>
-                <select id="iconSizeSelect">
-                    <option value="pequeño">Pequeño</option>
-                    <option value="mediano" selected>Mediano</option>
-                    <option value="grande">Grande</option>
-                </select>
-            </div>
-
-            <div class="setting-item">
-                <label for="fontSizeSelect" class="subtitle">Tamaño de letra:</label>
-                <select id="fontSizeSelect">
-                    <option value="pequeño">Pequeño</option>
-                    <option value="mediano" selected>Mediano</option>
-                    <option value="grande">Grande</option>
-                </select>
-            </div>
-        </section>
-    </main>
+<div class="setting-item">
+    <label for="modoSelect" class="subtitle">Modo:</label>
+    <select id="modoSelect">
+        <option value="claro">Claro</option>
+        <option value="oscuro">Oscuro</option>
+    </select>
 </div>
 
-<script src="/public/assets/scripts/personalizacion.js"></script>
+<div class="setting-item">
+    <label for="iconSizeSelect" class="subtitle">Tamaño de iconos:</label>
+    <select id="iconSizeSelect">
+        <option value="pequeño">Pequeño</option>
+        <option value="mediano" selected>Mediano</option>
+        <option value="grande">Grande</option>
+    </select>
+</div>
+
+<div class="setting-item">
+    <label for="fontSizeSelect" class="subtitle">Tamaño de letra:</label>
+    <select id="fontSizeSelect">
+        <option value="pequeño">Pequeño</option>
+        <option value="mediano" selected>Mediano</option>
+        <option value="grande">Grande</option>
+    </select>
+</div>
+
+
 </body>
 </html>

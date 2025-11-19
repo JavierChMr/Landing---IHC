@@ -103,7 +103,7 @@
 </div>
 
 <script src="/public/assets/scripts/ajustes.js"></script>
-<script src="/public/assets/scripts/personalizacion.js"></script>
+
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
@@ -125,20 +125,53 @@ document.addEventListener("DOMContentLoaded", () => {
             .then(html => {
                 contentArea.innerHTML = html;
                 activarBotonesInternos();  // <-- MUY IMPORTANTE
+
+                document.dispatchEvent(new Event("contentLoaded"));
             });
     });
 
-    // ─────────────── BOTÓN PERSONALIZACIÓN ───────────────
     btnPersonalizacion.addEventListener("click", () => {
-        chatBox.style.display = "none";
-        fetch("/public/html/personalizacion.html")
-            .then(res => res.text())
-            .then(html => {
-                contentArea.innerHTML = html;
-                activarBotonesInternos();
-            });
-    });
+    chatBox.style.display = "none";
 
+    fetch("/public/html/personalizacion.html")
+        .then(res => res.text())
+        .then(html => {
+            contentArea.innerHTML = html;
+            activarBotonesInternos();
+
+            // --- Cargar CSS dinámico ---
+            if (!document.getElementById("cssPersonalizacion")) {
+                const link = document.createElement("link");
+                link.id = "cssPersonalizacion";
+                link.rel = "stylesheet";
+                link.href = "/public/assets/styles/personalizacion.css";
+                document.head.appendChild(link);
+            }
+
+            // --- Cargar preload-theme.js (si no está ya cargado) ---
+            if (!window.preloadThemeLoaded) {
+                const scr = document.createElement("script");
+                scr.src = "/public/assets/scripts/preload-theme.js";
+                scr.onload = () => {
+                    window.preloadThemeLoaded = true;
+                };
+                document.body.appendChild(scr);
+            }
+
+            // --- Cargar personalizacion.js SIEMPRE ---
+            const old = document.getElementById("jsPersonalizacion");
+            if (old) old.remove();
+
+            const script = document.createElement("script");
+            script.src = "/public/assets/scripts/personalizacion.js";
+            script.id = "jsPersonalizacion";
+            document.body.appendChild(script);
+
+            script.onload = () => {
+                document.dispatchEvent(new Event("contentLoaded"));
+            };
+        });
+});
     // ─────────────── BOTÓN AYUDA ───────────────
     btnAyuda.addEventListener("click", () => {
         chatBox.style.display = "none";
@@ -147,6 +180,7 @@ document.addEventListener("DOMContentLoaded", () => {
             .then(html => {
                 contentArea.innerHTML = html;
                 activarBotonesInternos();
+                document.dispatchEvent(new Event("contentLoaded"));
             });
     });
 
@@ -163,6 +197,8 @@ document.addEventListener("DOMContentLoaded", () => {
             .then(res => res.text())
             .then(html => {
                 contentArea.innerHTML = html;
+                activarBotonesInternos();
+                document.dispatchEvent(new Event("contentLoaded"));
         })
         .catch(err => console.error("Error cargando ajustes-notificaciones:", err));
     });

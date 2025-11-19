@@ -1,88 +1,110 @@
-const modoSelect = document.getElementById("modoSelect");
-const iconSizeSelect = document.getElementById("iconSizeSelect");
-const fontSizeSelect = document.getElementById("fontSizeSelect");
-const logoutBtn = document.getElementById("logoutBtn");
-const userBox = document.getElementById("userBox");
-const userMenu = document.getElementById("userMenu");
+function inicializarPersonalizacion() {
 
+    // Obtener elementos SOLO cuando existan en el DOM cargado
+    const modoSelect = document.getElementById("modoSelect");
+    const iconSizeSelect = document.getElementById("iconSizeSelect");
+    const fontSizeSelect = document.getElementById("fontSizeSelect");
+    const logoutBtn = document.getElementById("logoutBtn");
+    const userBox = document.getElementById("userBox");
+    const userMenu = document.getElementById("userMenu");
+    const backArrow = document.getElementById("backArrow");
 
-function cargarPreferencias() {
-    const modo = localStorage.getItem("modo") || "claro";
-    const iconSize = localStorage.getItem("iconSize") || "mediano";
-    const fontSize = localStorage.getItem("fontSize") || "mediano";
+    // Si NO es la página personalización → salir
+    if (!modoSelect || !iconSizeSelect || !fontSizeSelect) return;
 
-    modoSelect.value = modo;
-    iconSizeSelect.value = iconSize;
-    fontSizeSelect.value = fontSize;
+    // ------------------- CARGAR PREFERENCIAS -------------------
+    function cargarPreferencias() {
+        const modo = localStorage.getItem("modo") || "claro";
+        const iconSize = localStorage.getItem("iconSize") || "mediano";
+        const fontSize = localStorage.getItem("fontSize") || "mediano";
 
-    aplicarModo(modo);
-    aplicarIconSize(iconSize);
-    aplicarFontSize(fontSize);
-}
+        modoSelect.value = modo;
+        iconSizeSelect.value = iconSize;
+        fontSizeSelect.value = fontSize;
 
-function aplicarModo(modo){
-    if(modo==="oscuro"){
-        document.documentElement.style.setProperty('--bg','#000000');
-        document.documentElement.style.setProperty('--sidebar','#111111');
-        document.documentElement.style.setProperty('--text-color','white');
-    } else {
-        document.documentElement.style.setProperty('--bg','#05345c');
-        document.documentElement.style.setProperty('--sidebar','#03243f');
-        document.documentElement.style.setProperty('--text-color','white');
+        aplicarModo(modo);
+        aplicarIconSize(iconSize);
+        aplicarFontSize(fontSize);
     }
-}
 
-function aplicarIconSize(size){
-    let px="28px";
-    if(size==="pequeño") px="20px";
-    if(size==="mediano") px="28px";
-    if(size==="grande") px="36px";
-    document.documentElement.style.setProperty('--icon-size',px);
-}
-
-function aplicarFontSize(size){
-    let px="17px";
-    if(size==="pequeño") px="14px";
-    if(size==="mediano") px="17px";
-    if(size==="grande") px="22px";
-    document.documentElement.style.setProperty('--font-size',px);
-}
-
-
-modoSelect.addEventListener("change", e => {
-    aplicarModo(e.target.value);
-    localStorage.setItem("modo", e.target.value);
-});
-iconSizeSelect.addEventListener("change", e => {
-    aplicarIconSize(e.target.value);
-    localStorage.setItem("iconSize", e.target.value);
-});
-fontSizeSelect.addEventListener("change", e => {
-    aplicarFontSize(e.target.value);
-    localStorage.setItem("fontSize", e.target.value);
-});
-
-
-userBox.addEventListener("click", () => {
-    if(!userMenu) return;
-    const shown = userMenu.getAttribute("aria-hidden")==="false";
-    if(shown){
-        userMenu.style.display="none";
-        userMenu.setAttribute("aria-hidden","true");
-    } else {
-        userMenu.style.display="block";
-        userMenu.setAttribute("aria-hidden","false");
+    // ------------------- APLICAR MODO -------------------
+    function aplicarModo(modo) {
+        if (modo === "oscuro") {
+            document.documentElement.style.setProperty('--bg', '#000000');
+            document.documentElement.style.setProperty('--sidebar', '#111111');
+            document.documentElement.style.setProperty('--text-color', 'white');
+        } else {
+            document.documentElement.style.setProperty('--bg', '#05345c');
+            document.documentElement.style.setProperty('--sidebar', '#03243f');
+            document.documentElement.style.setProperty('--text-color', 'white');
+        }
     }
-});
 
-logoutBtn.addEventListener("click", () => {
-    window.location.href="login.html";
-});
+    // ------------------- TAMAÑO ICONOS -------------------
+    function aplicarIconSize(size) {
+        let px = "28px";
+        if (size === "pequeño") px = "20px";
+        if (size === "mediano") px = "28px";
+        if (size === "grande") px = "36px";
+        document.documentElement.style.setProperty('--icon-size', px);
+    }
 
-cargarPreferencias();
+    // ------------------- TAMAÑO FUENTE -------------------
+    function aplicarFontSize(size) {
+        let px = "17px";
+        if (size === "pequeño") px = "14px";
+        if (size === "mediano") px = "17px";
+        if (size === "grande") px = "22px";
+        document.documentElement.style.setProperty('--font-size', px);
+    }
+
+    // ------------------- EVENTOS -------------------
+    modoSelect.addEventListener("change", e => {
+        aplicarModo(e.target.value);
+        localStorage.setItem("modo", e.target.value);
+    });
+
+    iconSizeSelect.addEventListener("change", e => {
+        aplicarIconSize(e.target.value);
+        localStorage.setItem("iconSize", e.target.value);
+    });
+
+    fontSizeSelect.addEventListener("change", e => {
+        aplicarFontSize(e.target.value);
+        localStorage.setItem("fontSize", e.target.value);
+    });
+
+    // ------------------- MENÚ USUARIO -------------------
+    if (userBox) {
+        userBox.addEventListener("click", () => {
+            if (!userMenu) return;
+            const shown = userMenu.getAttribute("aria-hidden") === "false";
+            userMenu.style.display = shown ? "none" : "block";
+            userMenu.setAttribute("aria-hidden", shown ? "true" : "false");
+        });
+    }
+
+    if (logoutBtn) {
+        logoutBtn.addEventListener("click", () => {
+            window.location.href = "login.html";
+        });
+    }
+
+    // ------------------- BOTÓN VOLVER -------------------
+    if (backArrow) {
+        backArrow.addEventListener("click", () => {
+            document.getElementById("content-area").innerHTML = "";
+            document.getElementById("chatBox").style.display = "block";
+        });
+    }
+
+    // Carga inicial
+    cargarPreferencias();
+}
 
 
-const backArrow = document.getElementById("backArrow");
-backArrow.addEventListener("click", () => {
-    window.location.href = "ajustes.html"; 
-});
+// Detectar cuando se cargue contenido dinámico
+document.addEventListener("DOMContentLoaded", inicializarPersonalizacion);
+
+// Ejecutar también cuando ajustes.js inserte HTML dinámico
+document.addEventListener("contentLoaded", inicializarPersonalizacion);

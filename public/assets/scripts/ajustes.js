@@ -131,4 +131,3 @@ if (pills.length >= 3) {
 
 
 
-

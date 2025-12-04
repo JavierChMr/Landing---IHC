@@ -240,6 +240,8 @@ body { background: var(--bg); color: #fff; height: 100vh; overflow: hidden; }
     cursor:pointer;
 }
 
+
+
 /* ─────────────────────────────── RESPONSIVE ─────────────────────────────── */
 
 
@@ -291,4 +293,15 @@ body { background: var(--bg); color: #fff; height: 100vh; overflow: hidden; }
     .input-inner input { font-size:15px; }
 
     .send-btn { padding:8px 14px; font-size:14px; }
+
+    body.tema-oscuro {
+    background-color: #0d1117;
+    color: white;
+    }
+
+    body.tema-claro {
+    background-color: white;
+    color: black;
+    }
+
 }

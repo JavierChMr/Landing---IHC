@@ -12,3 +12,4 @@ botones.forEach(boton => {
         boton.classList.add('active');
     });
 });
+

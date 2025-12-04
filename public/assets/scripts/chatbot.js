@@ -402,9 +402,6 @@ document.getElementById("voiceBtn")?.addEventListener("click", () => {
     recognition.start();
 });
 
-// ───────────────────────────────────────────
-// PROCESAR COMANDOS POR VOZ O TEXTO
-// ───────────────────────────────────────────
 function procesarComandoDeVoz(texto) {
     const t = texto.toLowerCase();
 
@@ -423,7 +420,7 @@ function procesarComandoDeVoz(texto) {
         `.trim();
 
         enviarRespuestaBot(infoUsuario);
-        return true; // ← Indica que SÍ se manejó aquí
+        return true;
     }
 
     // ───────────────────────────────
@@ -441,7 +438,7 @@ function procesarComandoDeVoz(texto) {
     if (activarCambio) {
 
         const lenguajeEncontrado = lenguajes.find(lang =>
-            t.includes(lang)
+            t.includes(lang.toLowerCase())
         );
 
         if (!lenguajeEncontrado) {
@@ -450,14 +447,45 @@ function procesarComandoDeVoz(texto) {
         }
 
         localStorage.setItem("lenguaje_predeterminado", lenguajeEncontrado);
-
         enviarRespuestaBot(`El lenguaje predeterminado ha sido cambiado a **${lenguajeEncontrado}**.`);
         return true;
     }
 
-    // ❌ No era un comando
+    // ───────────────────────────────
+    // ✔ CAMBIAR A TEMA OSCURO (VOZ)
+    // ───────────────────────────────
+    if (
+        t.includes("modo oscuro") ||
+        t.includes("tema oscuro") ||
+        t.includes("cambiar a modo oscuro")
+    ) {
+        localStorage.setItem("modo", "oscuro");   // ← IMPORTANTE: usa la clave correcta
+        aplicarModo("oscuro");                    // ← usa tu función real del preload
+
+        enviarRespuestaBot("El tema ha sido cambiado a modo oscuro.");
+        return true;
+    }
+
+    // ───────────────────────────────
+    // ✔ CAMBIAR A TEMA CLARO (VOZ)
+    // ───────────────────────────────
+    if (
+        t.includes("modo claro") ||
+        t.includes("tema claro") ||
+        t.includes("cambiar a modo claro")
+    ) {
+        localStorage.setItem("modo", "claro");
+        aplicarModo("claro");
+
+        enviarRespuestaBot("El tema ha sido cambiado a modo claro.");
+        return true;
+    }
+
     return false;
 }
+
+
+
 
 
 

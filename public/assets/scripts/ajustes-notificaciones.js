@@ -1,3 +1,4 @@
+
 // Aplicar modo guardado para evitar parpadeos
 const modoGuardado = localStorage.getItem("modo");
 
@@ -10,3 +11,4 @@ if (modoGuardado) {
     );
     document.documentElement.style.setProperty('--text-color', "white");
 }
+

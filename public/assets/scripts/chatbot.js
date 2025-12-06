@@ -123,20 +123,89 @@ function appendMessageToWindow(text, who) {
     chatWindow.scrollTop = chatWindow.scrollHeight;
 }
 
-// ENVIAR MENSAJE (ARREGLADO)
+// ===== DETECTOR AUTOMÁTICO DE LENGUAJE ===== //
+function detectarLenguaje(code) {
+
+    const patrones = {
+        python: [/def /, /import /, /print\(/, /self/, /:/],
+        javascript: [/function /, /const /, /let /, /=>/, /console\.log/],
+        java: [/public class/, /System\.out\.println/, /new [A-Z]/],
+        cpp: [/#include <.*>/, /std::/, /cout <</, /int main/],
+        php: [/<\?php/, /echo /, /\$\w+/],
+        csharp: [/using System/, /Console\.WriteLine/, /public class/],
+        go: [/package main/, /fmt\.Println/, /func main/],
+        rust: [/fn main/, /let mut/, /println!/, /::/]
+    };
+
+    let posibles = [];
+
+    for (const [lenguaje, tests] of Object.entries(patrones)) {
+        let matchCount = tests.filter(t => t.test(code)).length;
+        if (matchCount > 1) posibles.push({ lenguaje, score: matchCount });
+    }
+
+    if (posibles.length === 1) {
+        return posibles[0].lenguaje; // Detectado con confianza
+    }
+
+    if (posibles.length > 1) {
+        return "ambiguo"; // Puede ser varios lenguajes
+    }
+
+    return null; // No se detectó
+}
+
+
+
+// ======== FUNCIÓN PRINCIPAL: ENVIAR MENSAJE ======== //
+
 function enviarMensaje() {
 
     const text = mensajeInput.value.trim();
     if (!text) return;
 
-    // ⛔ Verificar si es un comando de voz o texto
+    // 🔥 1. Verificar si es un comando
     const handled = procesarComandoDeVoz(text);
     if (handled) {
         mensajeInput.value = "";
-        return; // ← Detiene aquí para que NO responda "Interesante..."
+        return;
     }
 
-    // Si NO es comando → mensaje normal
+    // 🔥 2. Detectar lenguaje automáticamente solo si hay código
+    const contieneCodigo = /[{}();=\[\]]|class |def |function|#include/.test(text);
+
+    if (contieneCodigo) {
+        const lenguaje = detectarLenguaje(text);
+
+        if (lenguaje === "ambiguo") {
+            enviarRespuestaBot(
+                "⚠ No puedo identificar con certeza el lenguaje del fragmento.\n" +
+                "Por favor indícame manualmente qué lenguaje estás utilizando."
+            );
+            mensajeInput.value = "";
+            return;
+        }
+
+        if (lenguaje === null) {
+            enviarRespuestaBot(
+                "❓ No reconozco el lenguaje de este código.\n" +
+                "Indica el lenguaje para que pueda explicarlo correctamente."
+            );
+            mensajeInput.value = "";
+            return;
+        }
+
+        // 🔥 Lenguaje detectado correctamente
+        enviarRespuestaBot(`🔍 Detecté que este código está escrito en **${lenguaje}**.\nAquí tienes la explicación:`);
+
+        // Aquí puedes invocar tu función del bot para explicar el código:
+        // const explicacion = explicarCodigo(text, lenguaje);
+
+        // enviarRespuestaBot(explicacion);
+    }
+
+
+    // 🔥 3. Guardia de chat
     if (!currentChatId) createNewChat();
     const chat = chats.find(c => c.id === currentChatId);
     if (!chat) return;
@@ -151,7 +220,7 @@ function enviarMensaje() {
     renderCurrentChat();
     mensajeInput.value = "";
 
-    // Respuesta normal del bot
+    // 🔥 4. Respuesta normal (si no fue código ni comando)
     setTimeout(() => {
         const botResp = getBotResponse(text);
         chat.messages.push({ who: "bot", text: botResp, ts: Date.now() });
@@ -159,6 +228,36 @@ function enviarMensaje() {
         renderCurrentChat();
     }, 500);
 }
+
+
+// ─────────────────────────────────────────────
+// DETECCIÓN AUTOMÁTICA DE LENGUAJE DE PROGRAMACIÓN
+// ─────────────────────────────────────────────
+function detectarLenguaje(codigo) {
+    const patrones = [
+        { lang: "python", regex: /\b(def|import|print|self|None|elif)\b/ },
+        { lang: "javascript", regex: /\b(function|const|let|console\.log|=>)\b/ },
+        { lang: "java", regex: /\b(public|class|static|void|System\.out)\b/ },
+        { lang: "c++", regex: /\b(#include|std::|cout|cin|int main)\b/ },
+        { lang: "php", regex: /<\?php|\becho\b|\$[A-Za-z_]/ },
+        { lang: "c#", regex: /\busing System|Console\.WriteLine|namespace\b/ },
+        { lang: "go", regex: /\bpackage main|fmt\.Println|func\b/ },
+        { lang: "rust", regex: /\bfn main|let mut|println!|cargo\b/ }
+    ];
+
+    let coincidencias = patrones.filter(p => p.regex.test(codigo));
+
+    if (coincidencias.length === 1) {
+        return coincidencias[0].lang;
+    }
+
+    if (coincidencias.length > 1) {
+        return "ambiguo";
+    }
+
+    return null; // no detectado
+}
+
 
 
 // RESPUESTAS NORMALES DEL BOT
@@ -483,9 +582,3 @@ function procesarComandoDeVoz(texto) {
 
     return false;
 }
-
-
-
-
-
-

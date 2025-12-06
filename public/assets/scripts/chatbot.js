@@ -226,7 +226,7 @@ function enviarMensaje() {
             return;
         }
 
-        // 🔥 Lenguaje detectado correctamente
+        //  Lenguaje detectado correctamente
         enviarRespuestaBot(`🔍 Detecté que este código está escrito en **${lenguaje}**.\nAquí tienes la explicación:`);
 
         // Aquí puedes invocar tu función del bot para explicar el código:
@@ -236,7 +236,7 @@ function enviarMensaje() {
     }
 
 
-    // 🔥 3. Guardia de chat
+    //  3. Guardia de chat
     if (!currentChatId) createNewChat();
     const chat = chats.find(c => c.id === currentChatId);
     if (!chat) return;
@@ -251,7 +251,7 @@ function enviarMensaje() {
     renderCurrentChat();
     mensajeInput.value = "";
 
-    // 🔥 4. Respuesta normal (si no fue código ni comando)
+    // 4. Respuesta normal (si no fue código ni comando)
     setTimeout(() => {
         const botResp = getBotResponse(text);
         chat.messages.push({ who: "bot", text: botResp, ts: Date.now() });
@@ -544,11 +544,11 @@ function procesarComandoDeVoz(texto) {
         t.includes("quiero saber mi información")) {
 
         const infoUsuario = `
-📄 Información de usuario
-• Nombre: admin1
-• Correo: admin1@safertech.com
-• Rol: Estudiante
-• Estado: Activo
+        📄 Información de usuario
+        • Nombre: admin1
+        • Correo: admin1@safertech.com
+        • Rol: Estudiante
+        • Estado: Activo
         `.trim();
 
         enviarRespuestaBot(infoUsuario);

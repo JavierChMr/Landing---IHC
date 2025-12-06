@@ -125,9 +125,8 @@ body { background: var(--bg); color: #fff; height: 100vh; overflow: hidden; }
     display:flex;
     flex-direction:column;
     padding: 30px 48px;
-    overflow:hidden;
+    /* QUITAMOS overflow para permitir scroll interno del chat */
 }
-
 
 .main-header {
     display:flex;
@@ -167,80 +166,194 @@ body { background: var(--bg); color: #fff; height: 100vh; overflow: hidden; }
     cursor:pointer;
 }
 
+/* --- ÁREA DEL CHAT --- */
 .chat-area {
-    display:flex;
-    flex-direction:column;
-    height: calc(100vh - 240px);
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 120px); 
+    padding: 0;
+    overflow: hidden; 
+    gap: 12px;
 }
 
-.chat-window {
-    flex:1;
-    background: rgba(255,255,255,0.06);
-    border-radius: 18px;
-    padding: 22px;
-    overflow-y:auto;
-    margin-bottom:18px;
 
-    display:flex;
-    flex-direction:column;
+.chat-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 0 0 0 0;
+}
+
+
+.welcome {
+    text-align: center;
+    padding: 6px 0;
+}
+
+
+.quick-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+/* Mantener la búsqueda centrada */
+.search-chat {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* --- BARRA DE BÚSQUEDA MODERNA --- */
+.search-chat {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+}
+
+/* --- BARRA DE BÚSQUEDA DELGADA Y MODERNA --- */
+.search-chat {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+}
+
+.search-chat input {
+    width: 220px;                 /* más delgada */
+    padding: 7px 12px;            /* menos alto */
+    border-radius: 16px;          /* más delgado visualmente */
+    border: 2px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.10);
+    color: white;
+    font-size: 14px;
+    outline: none;
+    transition: 0.25s ease;
+}
+
+.search-chat input::placeholder {
+    color: rgba(255,255,255,0.55);
+}
+
+.search-chat input:focus {
+    border-color: var(--accent);
+    background: rgba(255,255,255,0.18);
+    box-shadow: 0 0 4px rgba(59,132,255,0.35);
+}
+
+/* Botón redondo pero más pequeño */
+#searchChatBtn {
+    background: var(--accent);
+    border: none;
+    width: 36px;       /* reducido */
+    height: 36px;      /* reducido */
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;   /* más pequeño */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.25s ease;
+}
+
+#searchChatBtn:hover {
+    background: #5b9aff;
+    transform: scale(1.07);
+}
+
+#searchChatBtn:active {
+    transform: scale(0.93);
+}
+
+
+/* --- VENTANA DEL CHAT (scroll interno) --- */
+#chatWindow {
+    flex: 1;                  
+    overflow-y: auto;         
+    background: rgba(255,255,255,0.06);
+    border-radius: 14px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
     gap: 14px;
 }
 
-
+/* --- MENSAJES --- */
 .message {
-    padding:12px 16px;
-    border-radius:14px;
-    max-width:70%;
-    font-size:16px;
+    padding: 12px 16px;
+    border-radius: 14px;
+    max-width: 70%;
+    font-size: 16px;
     word-break: break-word;
-    line-height:1.45;
+    line-height: 1.45;
 }
-
-
 .message.user {
-    background:white;
-    color:black;
-    align-self:flex-start;
-    border-bottom-left-radius:4px;
-    margin-top:10px;
+    background: white;
+    color: black;
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+    margin-top: 10px;
 }
-
 
 .message.bot {
-    background:rgba(255,255,255,0.95);
-    color:black;
-    align-self:flex-end;
-    border-bottom-right-radius:4px;
-    margin-top:10px;
+    background: rgba(255,255,255,0.95);
+    color: black;
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+    margin-top: 10px;
 }
 
+/* --- INPUT FIJO ABAJO --- */
+.input-wrapper {
+    padding: 12px 0;
+    background: transparent;
+    border-top: 1px solid rgba(255,255,255,0.03);
+    position: sticky;
+    bottom: 0;
+    z-index: 100;
+}
 
-.input-wrapper { padding: 0 12px 12px 12px; }
+/* caja blanca redondeada del input */
 .input-inner {
-    background:white;
-    padding:10px 14px;
-    border-radius:40px;
-    display:flex;
-    align-items:center;
-    gap:10px;
+    background: white;
+    padding: 10px 14px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
-.plus { font-size:20px; color:#6b6b6b; }
-.input-inner input {
-    flex:1;
-    border:none;
-    outline:none;
-    font-size:16px;
+
+.plus {
+    font-size: 20px;
+    color: #6b6b6b;
 }
+
+
+.input-inner textarea {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    background: transparent;
+    line-height: 1.3;        /* líneas más compactas, sin saltos grandes */
+    overflow-y: auto;        /* scroll vertical REAL */
+    resize: none;            /* que no se estire */
+    max-height: 90px;        /* hasta dónde puede crecer */
+    height: 24px;            /* altura inicial sin saltos */
+    padding: 6px 0;          /* se ve bonito */
+    white-space: pre-wrap;   /* mantiene el formato */
+}
+
+/* --- BOTÓN ENVIAR --- */
 .send-btn {
-    background:var(--accent);
-    border:none;
-    color:white;
-    padding:10px 16px;
-    border-radius:20px;
-    cursor:pointer;
+    background: var(--accent);
+    border: none;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 20px;
+    cursor: pointer;
 }
-
-
 
 /* ─────────────────────────────── RESPONSIVE ─────────────────────────────── */
 
@@ -305,3 +418,6 @@ body { background: var(--bg); color: #fff; height: 100vh; overflow: hidden; }
     }
 
 }
+
+
+

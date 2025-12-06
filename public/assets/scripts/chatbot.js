@@ -11,7 +11,6 @@ const starBtn = document.getElementById("starCurrent");
 const deleteBtn = document.getElementById("deleteChat");
 const hamburger = document.getElementById("hamburger");
 const sidebar = document.getElementById("sidebar");
-
 const userBox = document.getElementById("userBox");
 const userMenu = document.getElementById("userMenu");
 const logoutBtn = document.getElementById("logoutBtn");
@@ -73,6 +72,33 @@ function createNewChat() {
     renderCurrentChat();
 }
 
+function buscarEnChat(palabra) {
+    if (!palabra) return;
+
+    const mensajes = chatWindow.querySelectorAll(".message div");
+
+    let firstMatch = null;
+
+    mensajes.forEach(msg => {
+        const texto = msg.innerHTML.replace(/<span class="highlight-search">|<\/span>/g, "");
+
+        msg.innerHTML = texto;
+
+        if (texto.toLowerCase().includes(palabra.toLowerCase())) {
+            if (!firstMatch) firstMatch = msg;
+
+            const regex = new RegExp(`(${palabra})`, "gi");
+            msg.innerHTML = texto.replace(regex, `<span class="highlight-search">$1</span>`);
+        }
+    });
+
+    if (firstMatch) {
+        firstMatch.scrollIntoView({ behavior: "smooth", block: "center" });
+    } else {
+        alert("No se encontró esa palabra en el chat.");
+    }
+}
+
 // RENDERIZAR CHAT
 function renderCurrentChat() {
     const chat = chats.find(c => c.id === currentChatId);
@@ -80,19 +106,21 @@ function renderCurrentChat() {
     chatWindow.innerHTML = "";
 
     if (!chat) {
-        showWelcome();
-        starBtn.textContent = "☆";
-        return;
-    }
+    showWelcome();
+    starBtn.textContent = "☆";
+    return;
+}
 
-    starBtn.textContent = chat.fav ? "★" : "☆";
+starBtn.textContent = chat.fav ? "★" : "☆";
 
-    if (chat.messages.length === 0) {
-        showWelcome();
-        return;
-    }
-
+if (chat.messages.length === 0) {
+    showWelcome();
+    chatWindow.innerHTML = "";
+    return;
+} else {
     hideWelcome();
+}
+
 
     chat.messages.forEach(m => appendMessageToWindow(m.text, m.who));
 
@@ -101,15 +129,18 @@ function renderCurrentChat() {
     }, 30);
 }
 
+
 function showWelcome() {
+    // Mostrar el mensaje de bienvenida (no ocultar chat-controls ni input)
     welcomeScreen.style.display = "block";
-    chatWindow.style.display = "block";
-    chatWindow.innerHTML = "";
+    // vaciar la ventana de chat si no hay chat activo (opcional)
+    // chatWindow.innerHTML = "";
 }
+
 function hideWelcome() {
     welcomeScreen.style.display = "none";
-    chatWindow.style.display = "block";
 }
+
 
 function appendMessageToWindow(text, who) {
     const wrapper = document.createElement("div");
@@ -400,6 +431,8 @@ function goAjustes() {
 // EVENTOS
 document.getElementById("btnNuevo").addEventListener("click", () => {
     createNewChat();
+    hideWelcome();
+    renderCurrentChat();
     closeListPanel();
 });
 
@@ -582,3 +615,16 @@ function procesarComandoDeVoz(texto) {
 
     return false;
 }
+
+const searchInput = document.getElementById("searchChatInput");
+const searchBtn = document.getElementById("searchChatBtn");
+
+searchBtn.addEventListener("click", () => {
+    buscarEnChat(searchInput.value.trim());
+});
+
+searchInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+        buscarEnChat(searchInput.value.trim());
+    }
+});

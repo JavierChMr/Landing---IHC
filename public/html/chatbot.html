@@ -37,9 +37,7 @@
                 <span class="label">Ajustes</span>
             </button>
 
-            <div class="list-panel" id="listPanel" aria-hidden="true">
-                
-            </div>
+            <div class="list-panel" id="listPanel" aria-hidden="true"></div>
         </div>
 
         <div class="sidebar-bottom">
@@ -48,7 +46,6 @@
                 <span class="user-name" id="sidebarUser">admin1</span>
             </div>
 
-            
             <div id="userMenu" class="user-menu" aria-hidden="true">
                 <button id="logoutBtn" class="user-menu-item">Cerrar sesión</button>
             </div>
@@ -73,31 +70,42 @@
         <!-- Welcome / content area -->
         <section class="welcome" id="welcomeScreen">
             <h2 class="welcome-title">En que puedo ayudarte hoy?</h2>
-
-            <div class="quick-buttons">
-                <button class="pill" data-action="analizar">Analizar código</button>
-                <button class="pill" data-action="comparar">Comparar código</button>
-                <button class="pill" data-action="traducir">Traducir código</button>
-            </div>
         </section>
 
-        <!-- Chat window -->
+        <!-- Chat area FINAL -->
         <section class="chat-area">
+
+            <!-- CONTROLES arriba -->
+            <div class="chat-controls">
+
+                <div class="quick-buttons">
+                    <button class="pill" data-action="analizar">Analizar</button>
+                    <button class="pill" data-action="comparar">Comparar</button>
+                    <button class="pill" data-action="traducir">Traducir</button>
+                </div>
+
+                <div class="search-chat">
+                    <input id="searchChatInput" type="text" placeholder="Buscar en el chat..." />
+                    <button id="searchChatBtn">🔍</button>
+                </div>
+
+            </div>
+
+            <!-- VENTANA DEL CHAT -->
             <div class="chat-window" id="chatWindow" role="log" aria-live="polite"></div>
 
+            <!-- INPUT FIJO ABAJO -->
             <div class="input-wrapper">
                 <div class="input-inner">
                     <span class="plus">＋</span>
-
-                    <input id="mensaje" type="text" placeholder="Escribe tu mensaje..." autocomplete="off" />
-
-                    <!-- Botón de voz -->
+                    <textarea id="mensaje" placeholder="Escribe tu mensaje..." autocomplete="off"></textarea>
                     <button id="voiceBtn" class="send-btn" style="margin-right: 8px;">🎤</button>
-
-                    <button  button id="sendBtn" class="send-btn">Enviar</button>
+                    <button id="sendBtn" class="send-btn">Enviar</button>
                 </div>
             </div>
+
         </section>
+
     </main>
 </div>
 
